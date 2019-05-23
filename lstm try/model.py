@@ -112,26 +112,33 @@ class Model():
             def weighted_pick(weights):
                 t = np.cumsum(weights)
                 s = np.sum(weights)
+
                 return(int(np.searchsorted(t, np.random.rand(1)*s)))
 
-            tRet = '' #prime
-            char = seq[-1]
+            def final_pick(weights):
+                pitch = weights[7] < weights[9]
 
-            for n in range(5000):
+                if pitch:
+                    return 9, weights[9]/(weights[7] + weights[9])
+                else:
+                    return 7, weights[7]/(weights[7] + weights[9])
+
+            char = seq[-1]
+            tRet = seq
+
+            for n in range(50):
                 x = np.zeros((1, 1))
                 x[0, 0] = vocab[char]
                 feed = {self.input_data: x, self.initial_state: state}
                 [probs, state] = sess.run([self.probs, self.final_state], feed)
                 p = probs[0]
 
-                if sampling_type == 0:
-                    sample = np.argmax(p)
-                elif sampling_type == 2:
-                    if char == ' ':
-                        sample = weighted_pick(p)
-                    else:
-                        sample = np.argmax(p)
-                else:  # sampling_type == 1 default:
+                if char == '\t':
+                    final = final_pick(p)
+
+                    sample = final[0]
+                    confid = final[1]#round(final[1]*10000)/100
+                else:
                     sample = weighted_pick(p)
 
                 pred = chars[sample]
@@ -151,9 +158,9 @@ class Model():
                         distance = abs(int(predicted)-int(label))
                         error += distance
 
-                        ret += f'{predicted} - {label} - {distance}\n'
+                        ret += f'{seq},{predicted},{confid}%,{label},{distance}\n'
                     else:
-                        ret += f'{predicted}\n'
+                        ret += f'{seq},{predicted},{confid}%\n'
 
                     break
 
