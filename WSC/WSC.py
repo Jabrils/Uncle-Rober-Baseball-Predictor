@@ -1,7 +1,9 @@
+# Wholistic Sequencing Correlations
+
 def Comm(msg):
     print(f"\n{'~'*20} {msg} {'~'*20}\n")
 
-def CreateSeqDomainDictionary(dataFile):
+def CreateSeqDomainDictionary(data):
     '''
     This will scan an entire data file & will document every possible sequence in the file & store it into a dictionary that can then be used as an index for inputs to the NN
     '''
@@ -13,18 +15,12 @@ def CreateSeqDomainDictionary(dataFile):
     from collections import OrderedDict
 
     # Init Vars
-    data = []
     dic = []
     temp = []
+    maxSeqLen = 0
 
-    Comm('LOADING DATA!')
-    # Load the data & split it by line breaks
-    with open(dataFile) as t:
-        new = t.read().split('\n')
-
-    # Split the data again but this time by a tab. This will make 0 the sequence & 1 the label
-    for i in range(len(new)):
-        data.append(new[i].split('\t'))
+    for o in data:
+        maxSeqLen = StoreHighestValue(maxSeqLen, len(o))
 
 # BELOW ARE INPUTS
 # I NEED TO FIRST GET THE ENTIRE DOMAIN USING ALLCHAR
@@ -32,37 +28,35 @@ def CreateSeqDomainDictionary(dataFile):
 
     # Loop through every line in data file
     for seq in data:
-        # Set the first sequence to be only the first half of the sequence (removing the label)
-        seq = seq[0]
-
-    # TURN THIS WHOLE SECTION INTO A LOOP THAT WILL FIRST GRAB ALL 
 
         # Correlation Range
         cRange = [2,len(seq)]
 
         # Correlation Start
-        cStart = cRange[0]
+        cCurrent = cRange[0]
 
-        # 1RST CORRELATION: loop through the sequence
-        for i in range(cRange[1]):
-            gen = ""
-            # if we are less than 1 character before the last character (will return error otherwise), then add the character @i & @i+1 concatenated to the temp array
-            if i < cRange[1] - (cStart - 1):
-                gen += seq[i]
-                gen += seq[i+1]
-                temp.append(gen)
+        # We need to loop through our sequence as many times as the longest sequence in our data THIS PART COULD BE OPTIMIZED
+        for h in range(maxSeqLen):
+            # CORRELATIONS: loop through the entire sequence of correlation range length
+            for i in range(cRange[1]):
+                # Reset our Correlation Generator when we iterate i (move to the next element in the sequence) 
+                cGen = ""
 
-        # # 2ND CORRELATION: loop through the sequence
-        # for i in range(cRange[1]):
-        #     # if we are less than 2 characters before the last character (will return error otherwise), then add the character @i & @i+1 & @i+2 concatenated to the temp array
-        #     if i < cRange[1]-2:
-        #         temp.append(seq[i] + seq[i+1]  + seq[i+2])
+                # if we are less than X element before the end of the sequence (will return error otherwise), then add the element i + (i+X) concatenated to the temp array
+                if i < cRange[1] - (cCurrent - 1):
 
-        # # 3RD CORRELATION: loop through the sequence
-        # for i in range(cRange[1]):
-        #     # if we are less than 3 characters before the last character (will return error otherwise), then add the character @i & @i+1 & @i+2 & @i+3 concatenated to the temp array
-        #     if i < cRange[1]-3:
-        #         temp.append(seq[i] + seq[i+1]  + seq[i+2] + seq[i+3])
+                    # Loop through the current Correlation range we are looking at
+                    for j in range(cCurrent):
+                        # add the current sequence element (indicated as i), & as many elements that are within our current Correlation range (indicated as j)
+                        cGen += seq[i + j]
+
+                    # Finally append this correlation to our temp list
+                    temp.append(cGen)
+
+            # Incriment the current correlation range 
+            cCurrent += 1
+
+            print(cGen)
 
     # Remove the duplicates from our list, but keep the order (important for determinism)
     temp = list(OrderedDict.fromkeys(temp))
@@ -75,7 +69,6 @@ def CreateSeqDomainDictionary(dataFile):
             f.write(f'{i}:{dic[i]}\n')
 
     Comm(f'SEQUENCE DOMAIN SAVED IN /CONFIG!')
-
     return dic
 
 def CreateCounter(dic):
@@ -84,19 +77,17 @@ def CreateCounter(dic):
 
     return counter
 
-
 def GetSeqCount(seq, seqDictionary):
     '''
     Sequence Domain Dictionary
     '''
-
+    
+    # try this, if it returns an exception, we can properly communicate what we think went wrong to the user
     try:
         # Import libs
         from collections import OrderedDict
 
         # Init Vars
-        data = []
-        dic = []
         temp = []
 
         # loop through the sequence
@@ -113,9 +104,9 @@ def GetSeqCount(seq, seqDictionary):
         for t in temp:
             grab[t]+=1
 
-        return grab
+        return list(grab.values())
     except:
-        Comm("DICTIONARIES LIKELY COULD NOT BE LOADED!")
+        Comm(f"COUNTER FOR {seq} COULD NOT BE CREATED!")
         return None
 
 def LoadSeq(file):
@@ -141,7 +132,7 @@ def GetAllSeqCount(dataFile, dic):
     data = []
     counter = CreateCounter(dic)
     
-    Comm('LOADING DATA!')
+    Comm('CREATING SEQUENCE COUNTER INPUTS!')
 
     # Load the data & split it by line breaks
     with open(dataFile) as t:
@@ -152,3 +143,9 @@ def GetAllSeqCount(dataFile, dic):
         data.append(GetSeqCount(new[i].split('\t')[0],counter))
 
     return data
+
+def StoreHighestValue(mod, val):
+    if val > mod:
+        mod = val
+
+    return mod
