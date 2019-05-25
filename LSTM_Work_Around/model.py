@@ -158,7 +158,7 @@ class Model():
                         distance = abs(int(predicted)-int(label))
                         error += distance
 
-                        ret += f'{seq},{predicted},{confid}%,{label},{distance}\n'
+                        ret += f'{seq}\tPred: {predicted}\t Conf: {confid}%\t Label: {label}\t Dist: {distance}\n'
                     else:
                         ret += f'{seq},{predicted},{confid}%\n'
 
