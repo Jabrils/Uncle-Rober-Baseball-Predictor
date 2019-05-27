@@ -20,7 +20,7 @@ parser.add_argument('-t', "--train", action='store_true',
                     help='add -t if you want to train')
 parser.add_argument('-p', "--predict", action='store_true',
                     help='add -p if you want to predict')
-parser.add_argument('-lm', "--load_model", action='store_true',
+parser.add_argument('-lm', "--load_model", action='store_true', default=False,
                     help='add -lm if you want to load the model for further training')
 args = parser.parse_args()
 

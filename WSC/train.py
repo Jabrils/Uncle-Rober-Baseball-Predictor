@@ -1,6 +1,6 @@
 from keras.models import Sequential
 from keras.models import load_model
-from keras.layers import Dense
+from keras.layers import Input, Dense
 from keras.models import Model
 import numpy as np
 import WSC
@@ -33,15 +33,19 @@ def train(dataPath, modelName, loadModel, epochs, batches):
 
     test = np.array(test)
 
+    inp= Input(shape=(len(test[0]),))
+
+    # Encoder Weights
+    hidden = Dense(units=len(test[0]), activation='relu')(inp)
+    hidden = Dense(units=32, activation='relu')(hidden)
+    hidden = Dense(units=32, activation='relu')(hidden)
+    out = Dense(units=1, activation='sigmoid')(hidden)
+
+    model = Model(inp, out)#(f"{modelName}.h5")
+
     # HERE LOAD WEIGHTS
     if loadModel:
-        model = (f"{modelName}.h5")
-
-    # create model
-    model = Sequential()
-    model.add(Dense(32, input_dim=len(test[0]), activation='relu'))
-    model.add(Dense(32, activation='relu'))
-    model.add(Dense(1, activation='sigmoid'))
+        model.load_weights(f"{modelName}.h5")
 
     # Compile model
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
