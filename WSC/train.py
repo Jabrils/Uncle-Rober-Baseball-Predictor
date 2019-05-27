@@ -1,4 +1,5 @@
 from keras.models import Sequential
+from keras.models import load_model
 from keras.layers import Dense
 from keras.models import Model
 import numpy as np
@@ -6,7 +7,14 @@ import WSC
 from WSC import Comm
 import argparse
 
-def train(dataPath, modelName, epochs, batches):
+def train(dataPath, modelName, loadModel, epochs, batches):
+
+    # I MIGHT WANT TO HAVE THIS SAVE A FILE WITH INFO ON IT,
+    # LIKE # OF SAMPLES TRAINED ON,
+    # TOTAL # EPOCHS
+    # INPUT / DICTIONARY SIZE
+    # RESOLUTION
+
     X = []
     Y = []
 
@@ -24,6 +32,10 @@ def train(dataPath, modelName, epochs, batches):
     test = WSC.GetAllSeqCount(X, dic)
 
     test = np.array(test)
+
+    # HERE LOAD WEIGHTS
+    if loadModel:
+        model = (f"{modelName}.h5")
 
     # create model
     model = Sequential()

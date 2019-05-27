@@ -2,6 +2,10 @@ import argparse
 import train
 import predict
 
+# NEED TO SEE HOW WELL THIS THIS WOULD DO WITH A DIFFERENT SEQ PROBLEM,
+# LIKE INSTEAD OF 'GF' MAYBE SOMETHING LIKE
+# 'GAF' 'GEF' 'GSF' 'GDF' WHERE THE CORRECT ANSWER IS G, ANY ELEMENT, THEN F
+
 parser = argparse.ArgumentParser(
                     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('-mn','--model_name', type=str, default='model',
@@ -16,12 +20,17 @@ parser.add_argument('-t', "--train", action='store_true',
                     help='add -t if you want to train')
 parser.add_argument('-p', "--predict", action='store_true',
                     help='add -p if you want to predict')
+parser.add_argument('-lm', "--load_model", action='store_true',
+                    help='add -lm if you want to load the model for further training')
 args = parser.parse_args()
 
 # Train
 if args.train:
-    train.train(args.data_file, args.model_name, args.epochs, args.batches)
+    train.train(args.data_file, args.model_name, args.load_model, args.epochs, args.batches)
 
 # Predict
 if args.predict:
-    predict.predict(args.data_file, args.model_name)
+    check = args.data_file.split(' ')
+
+    for p in check:
+        predict.predict(p, args.model_name)

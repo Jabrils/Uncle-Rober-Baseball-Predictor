@@ -12,6 +12,7 @@ def CreateSeqDomainDictionary(data):
 
     # ADD RANGE CONSTRAINTS
     # ADD OPTION TO TOGGLE CHARACTERS OR WORDS
+    # ADD A RESOLUTION OPTION
 
     # Import libs
     from collections import OrderedDict

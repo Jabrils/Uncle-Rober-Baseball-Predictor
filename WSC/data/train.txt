@@ -5,7 +5,7 @@ sdfggf	1
 fsffgd	0
 assgff	1
 ggsdfa	0
-asffgf	0
+asffgf	1
 asd	0
 gsd	0
 gggfsa	1
