@@ -1,5 +1,7 @@
 # Wholistic Sequencing Correlations
 
+# TO FIX THE ERROR, I HAVE TO MAP EVERY POSSIBLE CORRELATION, NOT JUST WHAT APPEARS IN THE TRAINING DATA! YIKES!
+
 def Comm(msg):
     print(f"\n{'~'*20} {msg} {'~'*20}\n")
 
@@ -17,52 +19,37 @@ def CreateSeqDomainDictionary(data):
     # Init Vars
     dic = []
     temp = []
+    ret = []
     maxSeqLen = 0
+    resolution = 2
 
+    # 
     for o in data:
         maxSeqLen = StoreHighestValue(maxSeqLen, len(o))
 
-# BELOW ARE INPUTS
-# I NEED TO FIRST GET THE ENTIRE DOMAIN USING ALLCHAR
-# THEN I CAN FEED THE FEATURES BELOW INTO THAT DOMAIN SPACE
-
     # Loop through every line in data file
     for seq in data:
-
-        # Correlation Range
-        cRange = [2,len(seq)]
-
-        # Correlation Start
-        cCurrent = cRange[0]
-
-        # We need to loop through our sequence as many times as the longest sequence in our data THIS PART COULD BE OPTIMIZED
-        for h in range(maxSeqLen):
-            # CORRELATIONS: loop through the entire sequence of correlation range length
-            for i in range(cRange[1]):
-                # Reset our Correlation Generator when we iterate i (move to the next element in the sequence) 
-                cGen = ""
-
-                # if we are less than X element before the end of the sequence (will return error otherwise), then add the element i + (i+X) concatenated to the temp array
-                if i < cRange[1] - (cCurrent - 1):
-
-                    # Loop through the current Correlation range we are looking at
-                    for j in range(cCurrent):
-                        # add the current sequence element (indicated as i), & as many elements that are within our current Correlation range (indicated as j)
-                        cGen += seq[i + j]
-
-                    # Finally append this correlation to our temp list
-                    temp.append(cGen)
-
-            # Incriment the current correlation range 
-            cCurrent += 1
-
-            print(cGen)
+        for e in seq:
+           temp.append(e)
 
     # Remove the duplicates from our list, but keep the order (important for determinism)
     temp = list(OrderedDict.fromkeys(temp))
 
+    # This will add every element to every element in the domain, creating every possible correlation with a resolution of 2 
+    # if resolution == 2:
+    for i in temp:
+        for j in temp:
+            ret.append(i+j)
+
+    # This will add every element to every element in the domain, creating every possible correlation with a resolution of 3
+    # if resolution == 3:
+    for i in temp:
+        for j in temp:
+            for k in temp:
+                ret.append(i+j+k)
+
     # Create our dictionary
-    dic = dict(zip(temp,range(len(temp))))
+    dic = dict(zip(ret,range(len(ret))))
 
     with open("config/SeqDomain.txt", 'w') as f:
         for i in dic:
@@ -89,25 +76,55 @@ def GetSeqCount(seq, seqDictionary):
 
         # Init Vars
         temp = []
+        maxSeqLen = 1
 
-        # loop through the sequence
-        for i in range(len(seq)):
-            # if we are less than 1 character before the last character (will return error otherwise), then add the character @i & @i+1 concatenated to the temp array
-            if i < len(seq)-1:
-                temp.append(seq[i] + seq[i+1])
+        # Correlation Range
+        cRange = [2, len(seq)]
 
-        # Remove the duplicates from our list, but keep the order (important for determinism)
-        temp = list(OrderedDict.fromkeys(temp))
+        # Correlation Start
+        cCurrent = cRange[0]
 
+        # We need to loop through our sequence as many times as the longest sequence in our data THIS PART COULD BE OPTIMIZED
+        for h in range(maxSeqLen):
+            # CORRELATIONS: loop through the entire sequence of correlation range length
+            for i in range(cRange[1]):
+                # Reset our Correlation Generator when we iterate i (move to the next element in the sequence) 
+                cGen = ""
+
+                # if we are less than X element before the end of the sequence (will return error otherwise), then add the element i + (i+X) concatenated to the temp array
+                if i < cRange[1] - (cCurrent - 1):
+
+                    # Loop through the current Correlation range we are looking at
+                    for j in range(cCurrent):
+                        # add the current sequence element (indicated as i), & as many elements that are within our current Correlation range (indicated as j)
+                        cGen += seq[i + j]
+                        # print(seq, cGen)
+
+                    # Finally append this correlation to our temp list
+                    temp.append(cGen)
+
+            # Incriment the current correlation range
+            cCurrent += 1
+
+        # This will create an empty counter for us to add 
         grab = CreateCounter(seqDictionary)
 
+        # add 1 to every keyword of t in temp
         for t in temp:
             grab[t]+=1
+
+        # 
+        for g in grab:
+            grab[g] = sigmoid(grab[g])
 
         return list(grab.values())
     except:
         Comm(f"COUNTER FOR {seq} COULD NOT BE CREATED!")
-        return None
+        return None #[0]*330
+
+def sigmoid(x, derivative=False):
+    import numpy as np
+    return x*(1-x) if derivative else 1/(1+np.exp(-x))
 
 def LoadSeq(file):
     seq = {}
@@ -127,22 +144,19 @@ def LoadSeq(file):
 
         return None
 
-def GetAllSeqCount(dataFile, dic):
+def GetAllSeqCount(data, dic):
 
-    data = []
+    ret = []
+
     counter = CreateCounter(dic)
     
     Comm('CREATING SEQUENCE COUNTER INPUTS!')
 
-    # Load the data & split it by line breaks
-    with open(dataFile) as t:
-        new = t.read().split('\n')
+    # 
+    for d in data:
+        ret.append(GetSeqCount(d,counter))
 
-    # Split the data again but this time by a tab. This will make 0 the sequence & 1 the label
-    for i in range(len(new)):
-        data.append(GetSeqCount(new[i].split('\t')[0],counter))
-
-    return data
+    return ret
 
 def StoreHighestValue(mod, val):
     if val > mod:
