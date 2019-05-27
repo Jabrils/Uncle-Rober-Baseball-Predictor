@@ -8,7 +8,7 @@ import argparse
 import time
 import datetime
 
-def predict(dataPath, modelName):
+def predict(dataPath, modelDir, modelName):
     X = []
     Y = []
     hasLabel = False
@@ -42,7 +42,7 @@ def predict(dataPath, modelName):
     test = np.array(test)
 
     # 
-    model = load_model(f"{modelName}.h5")
+    model = load_model(f"{modelDir}/{modelName}/{modelName}.h5")
 
     # calculate predictions
     predictions = model.predict(test)

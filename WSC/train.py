@@ -2,18 +2,21 @@ from keras.models import Sequential
 from keras.models import load_model
 from keras.layers import Input, Dense
 from keras.models import Model
+import os
 import numpy as np
 import WSC
 from WSC import Comm
 import argparse
 
-def train(dataPath, modelName, loadModel, epochs, batches):
+def train(dataPath, modelsDir, modelName, loadModel, epochs, batches):
 
     # I MIGHT WANT TO HAVE THIS SAVE A FILE WITH INFO ON IT,
     # LIKE # OF SAMPLES TRAINED ON,
     # TOTAL # EPOCHS
     # INPUT / DICTIONARY SIZE
     # RESOLUTION
+
+    # EXPERIMENT WITH DIFFERNT MODEL SIZES & ARCHITECTURES
 
     X = []
     Y = []
@@ -37,15 +40,18 @@ def train(dataPath, modelName, loadModel, epochs, batches):
 
     # Encoder Weights
     hidden = Dense(units=len(test[0]), activation='relu')(inp)
+    hidden = Dense(units=64, activation='relu')(hidden)
     hidden = Dense(units=32, activation='relu')(hidden)
-    hidden = Dense(units=32, activation='relu')(hidden)
+    hidden = Dense(units=16, activation='relu')(hidden)
+    hidden = Dense(units=8, activation='relu')(hidden)
+    hidden = Dense(units=4, activation='relu')(hidden)
     out = Dense(units=1, activation='sigmoid')(hidden)
 
-    model = Model(inp, out)#(f"{modelName}.h5")
+    model = Model(inp, out)
 
     # HERE LOAD WEIGHTS
     if loadModel:
-        model.load_weights(f"{modelName}.h5")
+        model.load_weights(f"{modelsDir}/{modelName}/{modelName}.h5")
 
     # Compile model
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
@@ -57,7 +63,15 @@ def train(dataPath, modelName, loadModel, epochs, batches):
     scores = model.evaluate(test, Y)
     print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
 
+    # 
+    if not os.path.isdir(f'{modelsDir}'):
+        os.mkdir(f'{modelsDir}')
+    
+    # 
+    if not os.path.isdir(f'{modelsDir}/{modelName}'):
+        os.mkdir(f'{modelsDir}/{modelName}')
+
     # save the model
-    model.save(f"{modelName}.h5")
+    model.save(f"{modelsDir}/{modelName}/{modelName}.h5")
 
     Comm("Saved Model!")

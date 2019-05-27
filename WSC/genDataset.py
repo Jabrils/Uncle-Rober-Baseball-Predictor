@@ -8,14 +8,14 @@ turn = 0
 
 def genSeq():
     seqG = ''
-    for i in range(random.randint(2,12)):
+    for i in range(random.randint(2,25)):
         seqG += chars[random.randint(0,len(chars)-1)]
 
     return seqG
 
 save = ''
 
-for a in range(100000):
+for a in range(1000):
     label = turn
 
     while label == turn:

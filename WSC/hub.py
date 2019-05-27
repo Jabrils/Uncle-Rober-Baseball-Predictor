@@ -12,6 +12,8 @@ parser.add_argument('-mn','--model_name', type=str, default='model',
                     help='the name you want your model to be saved as')
 parser.add_argument('-df','--data_file', type=str, default='data/train.txt',
                     help='the name you want your model to be saved as')
+parser.add_argument('-md','--models_dir', type=str, default='models',
+                    help='the name you want your model to be saved as')
 parser.add_argument('-e','--epochs',type=int, default=100,
                     help='use -e to set the number of epochs for training')
 parser.add_argument('-b','--batches',type=int, default=2048,
@@ -26,11 +28,11 @@ args = parser.parse_args()
 
 # Train
 if args.train:
-    train.train(args.data_file, args.model_name, args.load_model, args.epochs, args.batches)
+    train.train(args.data_file, args.models_dir, args.model_name, args.load_model, args.epochs, args.batches)
 
 # Predict
 if args.predict:
     check = args.data_file.split(' ')
 
     for p in check:
-        predict.predict(p, args.model_name)
+        predict.predict(p, args.models_dir, args.model_name)
