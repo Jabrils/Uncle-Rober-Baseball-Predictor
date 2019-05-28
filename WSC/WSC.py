@@ -5,7 +5,7 @@
 def Comm(msg):
     print(f"\n{'~'*20} {msg} {'~'*20}\n")
 
-def CreateSeqDomainDictionary(data):
+def CreateSeqDomainDictionary(data, resolution):
     conf = "config/SeqDomain.conf"
 
     '''
@@ -21,10 +21,11 @@ def CreateSeqDomainDictionary(data):
 
     # Init Vars
     dic = []
-    temp = []
-    ret = []
+    elements = []
     maxSeqLen = 0
-    resolution = 2
+
+    resolution[0] = resolution[1] if resolution[0] > resolution[1] else resolution[0]
+    resLoc = resolution[0]
 
     # 
     for o in data:
@@ -33,37 +34,74 @@ def CreateSeqDomainDictionary(data):
     # Loop through every line in data file
     for seq in data:
         for e in seq:
-           temp.append(e)
+           elements.append(e)
 
     # Remove the duplicates from our list, but keep the order (important for determinism)
-    temp = list(OrderedDict.fromkeys(temp))
+    elements = list(OrderedDict.fromkeys(elements))
 
-    # This will add every element to every element in the domain, creating every possible correlation with a resolution of 2 
-    # if resolution == 2:
-    for i in temp:
-        for j in temp:
-            ret.append(i+j)
-
-    # This will add every element to every element in the domain, creating every possible correlation with a resolution of 3
-    # if resolution == 3:
-    for i in temp:
-        for j in temp:
-            for k in temp:
-                ret.append(i+j+k)
-
+    ret = GetResInps(resolution, elements)
+    
     # Create our dictionary
     dic = dict(zip(ret,range(len(ret))))
 
-    ret = f'{resolution};'
+    ret = f'{resolution[0]}\t{resolution[1]}\n'
 
+    # 
     for i in dic:
-        ret += f'{i}:{dic[i]}+'
+        ret += f'{i}:{dic[i]}\t'
 
+    # 
     with open(conf, 'w') as f:
         f.write(ret)
 
     Comm(f'SEQUENCE DOMAIN SAVED IN /CONFIG!')
+    Comm(f'Res: [{resolution[0]},{resolution[1]}] ~ Inps: {len(dic)}')
     return dic
+
+def GetResInps(res, el):
+    ret = []
+    resLoc = res[0]
+
+    while resLoc <= res[1]:
+        # This will add every element to every element in the domain, creating every possible correlation with a resolution of 2 
+        if resLoc == 1:
+            for i in el:
+                ret.append(i)
+
+        # This will add every element to every element in the domain, creating every possible correlation with a resolution of 2 
+        if resLoc == 2:
+            for i in el:
+                for j in el:
+                    ret.append(i+j)
+            
+        # This will add every element to every element in the domain, creating every possible correlation with a resolution of 3
+        if resLoc == 3:
+            for i in el:
+                for j in el:
+                    for k in el:
+                        ret.append(i+j+k)
+
+        # This will add every element to every element in the domain, creating every possible correlation with a resolution of 3
+        if resLoc == 4:
+            for i in el:
+                for j in el:
+                    for k in el:
+                        for l in el:
+                            ret.append(i+j+k+l)
+
+        # This will add every element to every element in the domain, creating every possible correlation with a resolution of 3
+        if resLoc == 5:
+            for i in el:
+                for j in el:
+                    for k in el:
+                        for l in el:
+                            for o in el:
+                                ret.append(i+j+k+l+o)
+
+        # Incriment the resolution location we are looking at
+        resLoc += 1
+
+    return ret
 
 def CreateCounter(dic):
     # Create our counter template
@@ -71,7 +109,7 @@ def CreateCounter(dic):
 
     return counter
 
-def GetSeqCount(seq, seqDictionary):
+def GetSeqCount(seq, seqDictionary, resolution):
     '''
     Sequence Domain Dictionary
     '''
@@ -82,41 +120,38 @@ def GetSeqCount(seq, seqDictionary):
         from collections import OrderedDict
 
         # Init Vars
-        temp = []
-        maxSeqLen = 1
-
-        # Correlation Range
-        cRange = [2, len(seq)]
+        corr = []
 
         # Correlation Start
-        cCurrent = cRange[0]
+        cCurrent = resolution[0]
 
-        # We need to loop through our sequence as many times as the longest sequence in our data THIS PART COULD BE OPTIMIZED
-        for h in range(maxSeqLen):
+        # 
+        while cCurrent <= resolution[1]:
             # CORRELATIONS: loop through the entire sequence of correlation range length
-            for i in range(cRange[1]):
+            for i in range(len(seq)):
                 # Reset our Correlation Generator when we iterate i (move to the next element in the sequence) 
                 cGen = ""
 
-                # if we are less than X element before the end of the sequence (will return error otherwise), then add the element i + (i+X) concatenated to the temp array
-                if i < cRange[1] - (cCurrent - 1):
+                # if we are less than X element before the end of the sequence (will return error otherwise), then add the element i + (i+X) concatenated to the elements array
+                if i < len(seq) - (cCurrent - 1):
 
                     # Loop through the current Correlation range we are looking at
                     for j in range(cCurrent):
                         # add the current sequence element (indicated as i), & as many elements that are within our current Correlation range (indicated as j)
                         cGen += seq[i + j]
 
-                    # Finally append this correlation to our temp list
-                    temp.append(cGen)
+                    # Finally append this correlation to our elements list
+                    corr.append(cGen)
 
             # Incriment the current correlation range
             cCurrent += 1
 
+        print(corr)
         # This will create an empty counter for us to add 
         grab = CreateCounter(seqDictionary)
 
-        # add 1 to every keyword of t in temp
-        for t in temp:
+        # add 1 to every keyword of t in elements
+        for t in corr:
             grab[t]+=1
 
         # 
@@ -137,13 +172,13 @@ def LoadConf(file):
 
     try:
         with open(f"{file}") as f:
-            load = f.read().split(';')
+            load = f.read().split('\n')
 
             conf = load[0]
             dic = load[1]
 
         dic = dic[:-1]
-        dic = dic.split('+')
+        dic = dic.split('\t')
 
         for line in dic:
             (key, val) = line.split(':')
@@ -157,7 +192,7 @@ def LoadConf(file):
 
         return None
 
-def GetAllSeqCount(data, dic):
+def GetAllSeqCount(data, dic, res):
 
     ret = []
 
@@ -167,7 +202,7 @@ def GetAllSeqCount(data, dic):
 
     # 
     for d in data:
-        ret.append(GetSeqCount(d,counter))
+        ret.append(GetSeqCount(d,counter, res))
 
     return ret
 

@@ -24,10 +24,17 @@ def train(dataPath, modelsDir, modelName, loadModel, epochs, batches):
         X.append(grab[0])
         Y.append(int(grab[1]))
 
+    # 
     dic, sett = WSC.LoadConf(conf)
-    test = WSC.GetAllSeqCount(X, dic)
-
+    #
+    sett = sett.split('\t')
+    # 
+    resolution = [int(sett[0]),int(sett[1])]
+    # 
+    test = WSC.GetAllSeqCount(X, dic, resolution)
+    # 
     test = np.array(test)
+
 
     inp = Input(shape=(len(test[0]),))
 
@@ -45,7 +52,16 @@ def train(dataPath, modelsDir, modelName, loadModel, epochs, batches):
 
     # HERE LOAD WEIGHTS
     if loadModel:
-        model.load_weights(f"{modelsDir}/{modelName}/{modelName}.h5")
+        try:
+            model.load_weights(f"{modelsDir}/{modelName}/{modelName}.h5")
+        except:
+            Comm(f"THERE IS NO MODEL {modelsDir}/{modelName}/{modelName}.h5")
+            cont = input("Want to create the modedl here? (y or n): ")
+            loadModel = False
+
+            if cont != 'y':
+                Comm("EXITING!")
+                return
 
     # Compile model
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])

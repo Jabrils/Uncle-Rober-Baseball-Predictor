@@ -1,4 +1,4 @@
-def init(dataFile):
+def init(dataFile, res):
     import WSC
 
     x = []
@@ -14,6 +14,6 @@ def init(dataFile):
         x.append(grab[0])
         y.append(grab[1])
 
-    _sdd = WSC.CreateSeqDomainDictionary(x)
+    _sdd = WSC.CreateSeqDomainDictionary(x, res)
 
     return _sdd

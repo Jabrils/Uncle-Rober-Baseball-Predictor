@@ -1,0 +1,16 @@
+05-28-2019 00:23:37	testTest	Inp Size: 36	Resolution: 2	Total Epochs: 1100	Data: data/train.txt	Samples: 35	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 00:24:10	testTest	Inp Size: 36	Resolution: 2	Total Epochs: 1100	Data: data/train2.txt	Samples: 10000	Acc: 73.87	Prec: 98.07	Rec: 48.7
+05-28-2019 00:25:28	testTest2	Inp Size: 36	Resolution: 2	Total Epochs: 500	Data: data/train.txt	Samples: 35	Acc: 62.86	Prec: 35.0	Rec: 100.0
+05-28-2019 00:25:46	testTest2	Inp Size: 36	Resolution: 2	Total Epochs: 500	Data: data/train2.txt	Samples: 10000	Acc: 70.56	Prec: 63.18	Rec: 98.56
+05-28-2019 00:26:19	testTest2	Inp Size: 36	Resolution: 2	Total Epochs: 1000	Data: data/train.txt	Samples: 35	Acc: 62.86	Prec: 35.0	Rec: 100.0
+05-28-2019 00:26:36	testTest2	Inp Size: 36	Resolution: 2	Total Epochs: 1000	Data: data/train2.txt	Samples: 10000	Acc: 69.02	Prec: 61.9	Rec: 98.94
+05-28-2019 00:33:34	testTest2	Inp Size: 36	Resolution: 2	Total Epochs: 2500	Data: data/train2.txt	Samples: 10000	Acc: 77.07	Prec: 69.22	Rec: 97.5
+05-28-2019 00:34:13	testTest2	Inp Size: 36	Resolution: 2	Total Epochs: 4000	Data: data/train2.txt	Samples: 10000	Acc: 77.3	Prec: 69.39	Rec: 97.7
+05-28-2019 00:41:29	testTest3	Inp Size: 36	Resolution: 2	Total Epochs: 500	Data: data/train.txt	Samples: 35	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 00:43:19	testTest3	Inp Size: 36	Resolution: 2	Total Epochs: 500	Data: data/100k.txt	Samples: 100000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 00:50:28	testTest4	Inp Size: 36	Resolution: 2	Total Epochs: 250	Data: data/100k.txt	Samples: 100000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 00:56:12	testTest5	Inp Size: 36	Resolution: 2	Total Epochs: 100	Data: data/100k.txt	Samples: 100000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 00:58:34	testTest6	Inp Size: 36	Resolution: 2	Total Epochs: 50	Data: data/100k.txt	Samples: 100000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 01:05:33	testTest7	Inp Size: 36	Resolution: 2	Total Epochs: 25	Data: data/100k.txt	Samples: 100000	Acc: 99.99	Prec: 100.0	Rec: 99.98
+05-28-2019 01:10:06	testTest7	Inp Size: 36	Resolution: 2	Total Epochs: 10	Data: data/100k.txt	Samples: 100000	Acc: 93.77	Prec: 94.74	Rec: 92.68
+05-28-2019 01:19:57	testTest7	Inp Size: 225	Resolution: 2	Total Epochs: 250	Data: data/100k.txt	Samples: 100000	Acc: 100.0	Prec: 100.0	Rec: 100.0
