@@ -6,6 +6,8 @@ def Comm(msg):
     print(f"\n{'~'*20} {msg} {'~'*20}\n")
 
 def CreateSeqDomainDictionary(data):
+    conf = "config/SeqDomain.conf"
+
     '''
     This will scan an entire data file & will document every possible sequence in the file & store it into a dictionary that can then be used as an index for inputs to the NN
     '''
@@ -52,9 +54,13 @@ def CreateSeqDomainDictionary(data):
     # Create our dictionary
     dic = dict(zip(ret,range(len(ret))))
 
-    with open("config/SeqDomain.txt", 'w') as f:
-        for i in dic:
-            f.write(f'{i}:{dic[i]}\n')
+    ret = f'{resolution};'
+
+    for i in dic:
+        ret += f'{i}:{dic[i]}+'
+
+    with open(conf, 'w') as f:
+        f.write(ret)
 
     Comm(f'SEQUENCE DOMAIN SAVED IN /CONFIG!')
     return dic
@@ -99,7 +105,6 @@ def GetSeqCount(seq, seqDictionary):
                     for j in range(cCurrent):
                         # add the current sequence element (indicated as i), & as many elements that are within our current Correlation range (indicated as j)
                         cGen += seq[i + j]
-                        # print(seq, cGen)
 
                     # Finally append this correlation to our temp list
                     temp.append(cGen)
@@ -127,21 +132,28 @@ def sigmoid(x, derivative=False):
     import numpy as np
     return x*(1-x) if derivative else 1/(1+np.exp(-x))
 
-def LoadSeq(file):
+def LoadConf(file):
     seq = {}
 
     try:
         with open(f"{file}") as f:
-            for line in f:
-                (key, val) = line.split(':')
-                seq[key] = int(val)
+            load = f.read().split(';')
+
+            conf = load[0]
+            dic = load[1]
+
+        dic = dic[:-1]
+        dic = dic.split('+')
+
+        for line in dic:
+            (key, val) = line.split(':')
+            seq[key] = int(val)
 
         Comm(f'SUCCESSFULLY LOADED SEQ CONFIG @ {file}!')
 
-        return seq
-
+        return seq, conf
     except:
-        Comm(f'FILE @ {file} DOES NOT EXIST!')
+        Comm(f'FILE @ {file} DOES NOT EXIST OR CONFIG FILE IS CORRUPTED!')
 
         return None
 

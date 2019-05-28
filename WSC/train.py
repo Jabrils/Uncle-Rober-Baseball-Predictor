@@ -9,14 +9,7 @@ from WSC import Comm
 import argparse
 
 def train(dataPath, modelsDir, modelName, loadModel, epochs, batches):
-
-    # I MIGHT WANT TO HAVE THIS SAVE A FILE WITH INFO ON IT,
-    # LIKE # OF SAMPLES TRAINED ON,
-    # TOTAL # EPOCHS
-    # INPUT / DICTIONARY SIZE
-    # RESOLUTION
-
-    # EXPERIMENT WITH DIFFERNT MODEL SIZES & ARCHITECTURES
+    conf = "config/SeqDomain.conf"
 
     X = []
     Y = []
@@ -31,14 +24,14 @@ def train(dataPath, modelsDir, modelName, loadModel, epochs, batches):
         X.append(grab[0])
         Y.append(int(grab[1]))
 
-    dic = WSC.LoadSeq("config/SeqDomain.txt")
+    dic, sett = WSC.LoadConf(conf)
     test = WSC.GetAllSeqCount(X, dic)
 
     test = np.array(test)
 
-    inp= Input(shape=(len(test[0]),))
+    inp = Input(shape=(len(test[0]),))
 
-    # Encoder Weights
+    # 
     hidden = Dense(units=len(test[0]), activation='relu')(inp)
     hidden = Dense(units=64, activation='relu')(hidden)
     hidden = Dense(units=32, activation='relu')(hidden)
@@ -47,6 +40,7 @@ def train(dataPath, modelsDir, modelName, loadModel, epochs, batches):
     hidden = Dense(units=4, activation='relu')(hidden)
     out = Dense(units=1, activation='sigmoid')(hidden)
 
+    # 
     model = Model(inp, out)
 
     # HERE LOAD WEIGHTS
@@ -73,5 +67,24 @@ def train(dataPath, modelsDir, modelName, loadModel, epochs, batches):
 
     # save the model
     model.save(f"{modelsDir}/{modelName}/{modelName}.h5")
+
+    # 
+    con = "Inp Size\tEpoch\n"
+
+    # We will update this if we are loading a model & adding to more epochs to it
+    nEpoch = 0
+
+    # 
+    if loadModel:
+        with open(f"{modelsDir}/{modelName}/conf.mc", 'r+') as f:
+            epGrab = f.read().split('\n')[1].split('\t')[1]
+            nEpoch = int(epGrab)
+    
+    # 
+    con += f'{len(dic)}\t{epochs + nEpoch}'
+
+    # 
+    with open(f"{modelsDir}/{modelName}/conf.mc", 'w') as f:
+        f.write(con)
 
     Comm("Saved Model!")

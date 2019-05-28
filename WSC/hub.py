@@ -1,4 +1,5 @@
 import argparse
+import init
 import train
 import predict
 
@@ -13,18 +14,24 @@ parser.add_argument('-mn','--model_name', type=str, default='model',
 parser.add_argument('-df','--data_file', type=str, default='data/train.txt',
                     help='the name you want your model to be saved as')
 parser.add_argument('-md','--models_dir', type=str, default='models',
-                    help='the name you want your model to be saved as')
+                    help='the location you want your models to be saved in')
 parser.add_argument('-e','--epochs',type=int, default=100,
                     help='use -e to set the number of epochs for training')
 parser.add_argument('-b','--batches',type=int, default=2048,
-                    help='use -e to set the number of epochs for training')
+                    help='use -b to set the number to batch for training')
 parser.add_argument('-t', "--train", action='store_true',
                     help='add -t if you want to train')
+parser.add_argument('-i', "--init", action='store_true',
+                    help='add -i if you want to initilize from some data')
 parser.add_argument('-p', "--predict", action='store_true',
                     help='add -p if you want to predict')
-parser.add_argument('-lm', "--load_model", action='store_true', default=False,
+parser.add_argument('-lm', "--load_model", action='store_true',
                     help='add -lm if you want to load the model for further training')
 args = parser.parse_args()
+
+# Initilize
+if args.init:
+    init.init(args.data_file)
 
 # Train
 if args.train:

@@ -9,6 +9,8 @@ import time
 import datetime
 
 def predict(dataPath, modelDir, modelName):
+    conf = "config/SeqDomain.conf"
+
     X = []
     Y = []
     hasLabel = False
@@ -17,6 +19,9 @@ def predict(dataPath, modelDir, modelName):
     tn = 0
     fp = 0
     fn = 0
+
+    mConf = open(f"{modelDir}/{modelName}/conf.mc").read()
+    mConf = mConf.split('\n')
 
     Comm(f"LOADING {dataPath}!")
 
@@ -35,7 +40,7 @@ def predict(dataPath, modelDir, modelName):
             hasLabel = True
 
     # 
-    dic = WSC.LoadSeq("config/SeqDomain.txt")
+    dic, sett = WSC.LoadConf(conf)
     test = WSC.GetAllSeqCount(X, dic)
 
     # 
@@ -70,6 +75,8 @@ def predict(dataPath, modelDir, modelName):
         acc = round((1-(err/len(predictions)))*10000)/100
         prec = round((tp/(tp+fp))*10000)/100
         rec = round((tp/(tp+fn))*10000)/100
+        res = sett
+        ep = mConf[1].split('\t')[1]
         st = datetime.datetime.fromtimestamp(time.time()).strftime('%m-%d-%Y %H:%M:%S')
 
         Comm(f'{acc}% Accurate')
@@ -80,6 +87,6 @@ def predict(dataPath, modelDir, modelName):
         Comm(f'Steal Recall: {rec}%')
 
         with open('data/log.tsv','a+') as f:
-            f.write(f'{st}\t{modelName}\tInp Size: {len(dic)}\tData: {dataPath}\tSamples: {len(predictions)}\tAcc: {acc}\tPrec: {prec}\tRec: {rec}\n')
+            f.write(f'{st}\t{modelName}\tInp Size: {len(dic)}\tResolution: {res}\tTotal Epochs: {ep}\tData: {dataPath}\tSamples: {len(predictions)}\tAcc: {acc}\tPrec: {prec}\tRec: {rec}\n')
 
     Comm("END")
