@@ -1,4 +1,5 @@
-# Wholistic Sequencing Correlations
+# S-DEC
+# Sequence-Domain Encompassed Correlations
 
 # TO FIX THE ERROR, I HAVE TO MAP EVERY POSSIBLE CORRELATION, NOT JUST WHAT APPEARS IN THE TRAINING DATA! YIKES!
 
@@ -6,15 +7,13 @@ def Comm(msg):
     print(f"\n{'~'*20} {msg} {'~'*20}\n")
 
 def CreateSeqDomainDictionary(data, resolution):
-    conf = "config/SeqDomain.conf"
-
     '''
     This will scan an entire data file & will document every possible sequence in the file & store it into a dictionary that can then be used as an index for inputs to the NN
     '''
 
-    # ADD RANGE CONSTRAINTS
+    conf = "config/SeqDomain.conf"
+
     # ADD OPTION TO TOGGLE CHARACTERS OR WORDS
-    # ADD A RESOLUTION OPTION
 
     # Import libs
     from collections import OrderedDict
@@ -24,7 +23,13 @@ def CreateSeqDomainDictionary(data, resolution):
     elements = []
     maxSeqLen = 0
 
+    # Check if resolution only has 1 value, if true then set both min & max to == that value
+    resolution = [resolution[0],resolution[0]] if len(resolution) == 1 else resolution
+
+    # Then check to see if the min resolution is greater than the max resolution, if so then clip it to == the max 
     resolution[0] = resolution[1] if resolution[0] > resolution[1] else resolution[0]
+
+    # Our current resolution we are looking at == the min resolution
     resLoc = resolution[0]
 
     # 
@@ -54,8 +59,8 @@ def CreateSeqDomainDictionary(data, resolution):
     with open(conf, 'w') as f:
         f.write(ret)
 
-    Comm(f'SEQUENCE DOMAIN SAVED IN /CONFIG!')
     Comm(f'Res: [{resolution[0]},{resolution[1]}] ~ Inps: {len(dic)}')
+    Comm(f'SEQUENCE DOMAIN SAVED IN /CONFIG!')
     return dic
 
 def GetResInps(res, el):
@@ -146,7 +151,6 @@ def GetSeqCount(seq, seqDictionary, resolution):
             # Incriment the current correlation range
             cCurrent += 1
 
-        print(corr)
         # This will create an empty counter for us to add 
         grab = CreateCounter(seqDictionary)
 
@@ -186,7 +190,7 @@ def LoadConf(file):
 
         Comm(f'SUCCESSFULLY LOADED SEQ CONFIG @ {file}!')
 
-        return seq, conf
+        return seq, LoadSettings(conf)
     except:
         Comm(f'FILE @ {file} DOES NOT EXIST OR CONFIG FILE IS CORRUPTED!')
 
@@ -211,3 +215,18 @@ def StoreHighestValue(mod, val):
         mod = val
 
     return mod
+
+def LoadSettings(sett):
+    '''
+    This will load the settings from the conf.mc file, but you have to pass in the settings split of the conf.mc file for it to be properly converted!
+    '''
+
+    sett = sett.split('\t')
+
+    s = Settings()
+    s.resolution = [int(sett[0]),int(sett[1])]
+
+    return s
+
+class Settings():
+    resolution = 0

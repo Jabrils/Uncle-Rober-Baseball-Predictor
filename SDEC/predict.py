@@ -1,14 +1,15 @@
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.models import load_model
-import numpy as np
-import WSC
-from WSC import Comm
-import argparse
-import time
-import datetime
 
 def predict(dataPath, modelDir, modelName):
+    from keras.models import Sequential
+    from keras.layers import Dense
+    from keras.models import load_model
+    import numpy as np
+    import SDEC
+    from SDEC import Comm
+    import argparse
+    import time
+    import datetime
+    
     conf = "config/SeqDomain.conf"
 
     X = []
@@ -40,9 +41,9 @@ def predict(dataPath, modelDir, modelName):
             hasLabel = True
 
     # 
-    dic, sett = WSC.LoadConf(conf)
-    test = WSC.GetAllSeqCount(X, dic)
-
+    dic, settings = SDEC.LoadConf(conf)
+    #
+    test = SDEC.GetAllSeqCount(X, dic, settings.resolution)
     # 
     test = np.array(test)
 
@@ -75,7 +76,7 @@ def predict(dataPath, modelDir, modelName):
         acc = round((1-(err/len(predictions)))*10000)/100
         prec = round((tp/(tp+fp))*10000)/100
         rec = round((tp/(tp+fn))*10000)/100
-        res = sett
+        res = settings.resolution
         ep = mConf[1].split('\t')[1]
         st = datetime.datetime.fromtimestamp(time.time()).strftime('%m-%d-%Y %H:%M:%S')
 

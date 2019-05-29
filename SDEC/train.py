@@ -1,14 +1,15 @@
-from keras.models import Sequential
-from keras.models import load_model
-from keras.layers import Input, Dense
-from keras.models import Model
-import os
-import numpy as np
-import WSC
-from WSC import Comm
-import argparse
 
 def train(dataPath, modelsDir, modelName, loadModel, epochs, batches):
+    from keras.models import Sequential
+    from keras.models import load_model
+    from keras.layers import Input, Dense
+    from keras.models import Model
+    import os
+    import numpy as np
+    import SDEC
+    from SDEC import Comm
+    import argparse
+    
     conf = "config/SeqDomain.conf"
 
     X = []
@@ -25,13 +26,9 @@ def train(dataPath, modelsDir, modelName, loadModel, epochs, batches):
         Y.append(int(grab[1]))
 
     # 
-    dic, sett = WSC.LoadConf(conf)
-    #
-    sett = sett.split('\t')
+    dic, settings = SDEC.LoadConf(conf)
     # 
-    resolution = [int(sett[0]),int(sett[1])]
-    # 
-    test = WSC.GetAllSeqCount(X, dic, resolution)
+    test = SDEC.GetAllSeqCount(X, dic, settings.resolution)
     # 
     test = np.array(test)
 
@@ -56,7 +53,7 @@ def train(dataPath, modelsDir, modelName, loadModel, epochs, batches):
             model.load_weights(f"{modelsDir}/{modelName}/{modelName}.h5")
         except:
             Comm(f"THERE IS NO MODEL {modelsDir}/{modelName}/{modelName}.h5")
-            cont = input("Want to create the modedl here? (y or n): ")
+            cont = input("Want to create the model here? (y or n): ")
             loadModel = False
 
             if cont != 'y':
