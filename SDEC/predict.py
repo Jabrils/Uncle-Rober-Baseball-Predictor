@@ -1,11 +1,63 @@
 
-def predict(dataPath, modelDir, modelName):
+def PredictSingle(X, modelDir, modelName):
+    import SDEC
+    from SDEC import Comm
+
+    Comm("INIT PREDICTION")
+
     from keras.models import Sequential
     from keras.layers import Dense
     from keras.models import load_model
     import numpy as np
+    import argparse
+    import time
+    import datetime
+    
+    conf = "config/SeqDomain.conf"
+
+    mConf = open(f"{modelDir}/{modelName}/conf.mc").read()
+    mConf = mConf.split('\n')
+
+    # 
+    dic, settings = SDEC.LoadConf(conf)
+    #
+    test = SDEC.GetAllSeqCount(X, dic, settings.resolution)
+    # 
+    test = np.array(test)
+    #
+    mc = SDEC.LoadModelConfig(f"{modelDir}/{modelName}/conf.mc")
+
+    Comm(f"RES: {settings.resolution} ~ INP: {len(test[0])}")
+
+    # 
+    model = load_model(f"{modelDir}/{modelName}/{modelName}.h5")
+
+    # calculate predictions
+    predictions = model.predict(test)
+
+    msg = "PREDICTIONS"
+
+    Comm(msg)
+
+    # 
+    for i in range(len(predictions)):
+        guess = int(round(predictions[i][0]))
+
+        print(f'Ind: {i}\tSeq: {X[i]}\tPred: {predictions[i][0]}\tGuess: {guess}') 
+
+    Comm("END")
+    return int(round(predictions[0][0]))
+
+def predict(dataPath, modelDir, modelName):
     import SDEC
     from SDEC import Comm
+
+    Comm("INIT PREDICTION")
+
+    from keras.models import Sequential
+    from keras.layers import Dense
+    from keras.models import load_model
+    import numpy as np
     import argparse
     import time
     import datetime
@@ -46,6 +98,11 @@ def predict(dataPath, modelDir, modelName):
     test = SDEC.GetAllSeqCount(X, dic, settings.resolution)
     # 
     test = np.array(test)
+    #
+    mc = SDEC.LoadModelConfig(f"{modelDir}/{modelName}/conf.mc")
+
+
+    Comm(f"RES: {settings.resolution} ~ INP: {len(test[0])}")
 
     # 
     model = load_model(f"{modelDir}/{modelName}/{modelName}.h5")
@@ -54,40 +111,56 @@ def predict(dataPath, modelDir, modelName):
     predictions = model.predict(test)
 
     # 
-    err = 0
+    totalErr = 0
+    wrongCnt = 0
+
+    msg = "WRONG PREDICTIONS" if hasLabel else "PREDICTIONS"
+
+    Comm(msg)
 
     # 
     for i in range(len(predictions)):
         guess = int(round(predictions[i][0]))
 
         if hasLabel:
-            err += abs(Y[i] - int(round(predictions[i][0])))
+            totalErr += abs(Y[i] - int(round(predictions[i][0])))
             tp += 1 if guess == 1 and Y[i] == 1 else 0
             fp += 1 if guess == 1 and Y[i] == 0 else 0
             fn += 1 if Y[i] == 1 and guess == 0 else 0
             tn += 1 if Y[i] == 0 and guess == 0 else 0
 
-            print(f'Ind: {i}\tSeq: {X[i]}\tPred: {predictions[i][0]}\tGuess: {guess}\tLabel: {Y[i]}\tError: {abs(Y[i] - int(round(predictions[i][0])))}') 
+            err = abs(Y[i] - int(round(predictions[i][0])))
+
+            if err == 1 or err == 0:
+                print(f'Ind: {i}\tSeq: {X[i]}\tPred: {predictions[i][0]}\tGuess: {guess}\tLabel: {Y[i]}\tError: {err}') 
+                wrongCnt += 1
         else:
             print(f'Ind: {i}\tSeq: {X[i]}\tPred: {predictions[i][0]}\tGuess: {guess}') 
 
+
     # 
     if hasLabel:
-        acc = round((1-(err/len(predictions)))*10000)/100
-        prec = round((tp/(tp+fp))*10000)/100
+        acc = round((1-(totalErr/len(predictions)))*10000)/100
+
+        tpOtpfp = tp/(tp+fp) if tp+fp != 0 else 0
+        prec = round((tpOtpfp)*10000)/100
         rec = round((tp/(tp+fn))*10000)/100
         res = settings.resolution
         ep = mConf[1].split('\t')[1]
         st = datetime.datetime.fromtimestamp(time.time()).strftime('%m-%d-%Y %H:%M:%S')
 
-        Comm(f'{acc}% Accurate')
+        # 
+        if wrongCnt == 0:
+            print("N/A")
 
-        print("When a 'steal' was predicted by the algorithm, how many of those predicted 'steals' were actually 'steal' labled?")
-        Comm(f'Steal Precision: {prec}%')
-        print("Out of all the actual 'steals' within the dataset, how many of those were correctly predicted?")
-        Comm(f'Steal Recall: {rec}%')
+        Comm(f'{modelName} is {acc}% Accurate')
+
+        Comm(f'Steal Precision: {prec}% ({round(len(X)*prec/100)}/{len(X)})')
+        print("Precision;\nWhen a 'steal' was predicted by the algorithm, how many of those predicted 'steals' were actually 'steal' labeled?")
+        Comm(f'Steal Recall: {rec}% ({round(len(X)*rec/100)}/{len(X)})')
+        print("Recall;\nOut of all the actual 'steals' within the dataset, how many of those were correctly predicted?")
 
         with open('data/log.tsv','a+') as f:
-            f.write(f'{st}\t{modelName}\tInp Size: {len(dic)}\tResolution: {res}\tTotal Epochs: {ep}\tData: {dataPath}\tSamples: {len(predictions)}\tAcc: {acc}\tPrec: {prec}\tRec: {rec}\n')
+            f.write(f'{st}\t{modelName}\tInp Size: {len(dic)}\tResolution: {res}\tTotal Epochs: {ep}\tTest Data: {dataPath}\tSamples: {len(predictions)}\tAcc: {acc}\tPrec: {prec}\tRec: {rec}\tTrained On: {mc.trainingData}\n')
 
     Comm("END")

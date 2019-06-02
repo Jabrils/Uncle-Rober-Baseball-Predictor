@@ -1,0 +1,103 @@
+05-28-2019 00:23:37	testTest	Inp Size: 36	Resolution: 2	Total Epochs: 1100	Data: data/train.txt	Samples: 35	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 00:24:10	testTest	Inp Size: 36	Resolution: 2	Total Epochs: 1100	Data: data/train2.txt	Samples: 10000	Acc: 73.87	Prec: 98.07	Rec: 48.7
+05-28-2019 00:25:28	testTest2	Inp Size: 36	Resolution: 2	Total Epochs: 500	Data: data/train.txt	Samples: 35	Acc: 62.86	Prec: 35.0	Rec: 100.0
+05-28-2019 00:25:46	testTest2	Inp Size: 36	Resolution: 2	Total Epochs: 500	Data: data/train2.txt	Samples: 10000	Acc: 70.56	Prec: 63.18	Rec: 98.56
+05-28-2019 00:26:19	testTest2	Inp Size: 36	Resolution: 2	Total Epochs: 1000	Data: data/train.txt	Samples: 35	Acc: 62.86	Prec: 35.0	Rec: 100.0
+05-28-2019 00:26:36	testTest2	Inp Size: 36	Resolution: 2	Total Epochs: 1000	Data: data/train2.txt	Samples: 10000	Acc: 69.02	Prec: 61.9	Rec: 98.94
+05-28-2019 00:33:34	testTest2	Inp Size: 36	Resolution: 2	Total Epochs: 2500	Data: data/train2.txt	Samples: 10000	Acc: 77.07	Prec: 69.22	Rec: 97.5
+05-28-2019 00:34:13	testTest2	Inp Size: 36	Resolution: 2	Total Epochs: 4000	Data: data/train2.txt	Samples: 10000	Acc: 77.3	Prec: 69.39	Rec: 97.7
+05-28-2019 00:41:29	testTest3	Inp Size: 36	Resolution: 2	Total Epochs: 500	Data: data/train.txt	Samples: 35	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 00:43:19	testTest3	Inp Size: 36	Resolution: 2	Total Epochs: 500	Data: data/100k.txt	Samples: 100000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 00:50:28	testTest4	Inp Size: 36	Resolution: 2	Total Epochs: 250	Data: data/100k.txt	Samples: 100000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 00:56:12	testTest5	Inp Size: 36	Resolution: 2	Total Epochs: 100	Data: data/100k.txt	Samples: 100000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 00:58:34	testTest6	Inp Size: 36	Resolution: 2	Total Epochs: 50	Data: data/100k.txt	Samples: 100000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 01:05:33	testTest7	Inp Size: 36	Resolution: 2	Total Epochs: 25	Data: data/100k.txt	Samples: 100000	Acc: 99.99	Prec: 100.0	Rec: 99.98
+05-28-2019 01:10:06	testTest7	Inp Size: 36	Resolution: 2	Total Epochs: 10	Data: data/100k.txt	Samples: 100000	Acc: 93.77	Prec: 94.74	Rec: 92.68
+05-28-2019 01:19:57	testTest7	Inp Size: 225	Resolution: 2	Total Epochs: 250	Data: data/100k.txt	Samples: 100000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 16:47:27	model	Inp Size: 6	Resolution: ['1', '1']	Total Epochs: 2100	Data: data/train2.txt	Samples: 10000	Acc: 84.44	Prec: 78.81	Rec: 94.22
+05-28-2019 16:57:07	model	Inp Size: 6	Resolution: ['1', '1']	Total Epochs: 2100	Data: data/train2.txt	Samples: 10000	Acc: 84.44	Prec: 78.81	Rec: 94.22
+05-28-2019 17:03:54	model	Inp Size: 42	Resolution: [1, 2]	Total Epochs: 1000	Data: data/train2.txt	Samples: 10000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 17:04:53	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 1000	Data: data/train2.txt	Samples: 10000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 17:33:36	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 250	Data: data/train2.txt	Samples: 10000	Acc: 79.75	Prec: 82.6	Rec: 75.38
+05-28-2019 18:17:46	model	Inp Size: 258	Resolution: [1, 3]	Total Epochs: 1000	Data: data/train2.txt	Samples: 10000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 18:18:38	model	Inp Size: 258	Resolution: [1, 3]	Total Epochs: 1000	Data: data/100k.txt	Samples: 100000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 18:19:06	model	Inp Size: 258	Resolution: [1, 3]	Total Epochs: 1000	Data: data/test.txt	Samples: 16	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 18:20:04	model	Inp Size: 258	Resolution: [1, 3]	Total Epochs: 1000	Data: data/gendata.txt	Samples: 1000	Acc: 99.9	Prec: 100.0	Rec: 99.8
+05-28-2019 18:22:02	model	Inp Size: 258	Resolution: [1, 3]	Total Epochs: 1000	Data: data/gendata.txt	Samples: 1000	Acc: 99.9	Prec: 100.0	Rec: 99.8
+05-28-2019 18:23:36	model	Inp Size: 258	Resolution: [1, 3]	Total Epochs: 1000	Data: data/gendata.txt	Samples: 1000	Acc: 99.9	Prec: 100.0	Rec: 99.8
+05-28-2019 18:24:33	model	Inp Size: 258	Resolution: [1, 3]	Total Epochs: 1000	Data: data/gendata.txt	Samples: 1000	Acc: 99.9	Prec: 100.0	Rec: 99.8
+05-28-2019 18:25:56	model	Inp Size: 258	Resolution: [1, 3]	Total Epochs: 2000	Data: data/gendata.txt	Samples: 1000	Acc: 99.9	Prec: 100.0	Rec: 99.8
+05-28-2019 18:29:46	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 2000	Data: data/gendata.txt	Samples: 1000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 18:30:56	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 2000	Data: data/train.txt	Samples: 35	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 18:32:09	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 2000	Data: data/train.txt	Samples: 35	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 18:32:27	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 2000	Data: data/train.txt	Samples: 35	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 18:33:30	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 2000	Data: data/100k.txt	Samples: 100000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 18:34:44	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 2000	Data: data/gendata.txt	Samples: 1000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 18:57:29	model	Inp Size: 258	Resolution: [1, 3]	Total Epochs: 50	Data: data/gendata.txt	Samples: 1000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 19:02:56	model	Inp Size: 258	Resolution: [1, 3]	Total Epochs: 50	Data: data/gendata.txt	Samples: 1000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 19:03:59	model	Inp Size: 258	Resolution: [1, 3]	Total Epochs: 50	Data: data/train.txt	Samples: 35	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 19:04:06	model	Inp Size: 258	Resolution: [1, 3]	Total Epochs: 50	Data: data/test.txt	Samples: 16	Acc: 75.0	Prec: 100.0	Rec: 50.0
+05-28-2019 19:05:26	model	Inp Size: 258	Resolution: [1, 3]	Total Epochs: 50	Data: data/train2.txt	Samples: 10000	Acc: 79.93	Prec: 99.11	Rec: 60.4
+05-28-2019 19:06:16	model	Inp Size: 258	Resolution: [1, 3]	Total Epochs: 50	Data: data/gendata.txt	Samples: 1000	Acc: 82.1	Prec: 97.91	Rec: 65.6
+05-28-2019 19:07:16	model	Inp Size: 258	Resolution: [1, 3]	Total Epochs: 50	Data: data/100k.txt	Samples: 100000	Acc: 80.42	Prec: 98.98	Rec: 61.47
+05-28-2019 19:23:32	model	Inp Size: 258	Resolution: [1, 3]	Total Epochs: 50	Data: data/gendata.txt	Samples: 1000	Acc: 82.7	Prec: 97.39	Rec: 67.2
+05-28-2019 20:13:05	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 50	Data: data/test.txt	Samples: 16	Acc: 87.5	Prec: 80.0	Rec: 100.0
+05-28-2019 20:15:02	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 50	Data: data/train.txt	Samples: 35	Acc: 85.71	Prec: 58.33	Rec: 100.0
+05-28-2019 20:15:19	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 50	Data: data/train2.txt	Samples: 10000	Acc: 90.26	Prec: 92.74	Rec: 87.36
+05-28-2019 20:16:20	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 50	Data: data/100k.txt	Samples: 100000	Acc: 89.58	Prec: 92.33	Rec: 86.32
+05-28-2019 20:16:51	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 50	Data: data/100k.txt	Samples: 100000	Acc: 89.58	Prec: 92.33	Rec: 86.32
+05-28-2019 20:25:15	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 50	Data: data/train2.txt	Samples: 10000	Acc: 95.35	Prec: 98.19	Rec: 92.4
+05-28-2019 20:25:34	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 50	Data: data/test.txt	Samples: 16	Acc: 87.5	Prec: 80.0	Rec: 100.0
+05-28-2019 20:26:30	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 50	Data: data/gendata.txt	Samples: 1000	Acc: 87.4	Prec: 97.7	Rec: 76.6
+05-28-2019 20:27:29	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 50	Data: data/train.txt	Samples: 35	Acc: 91.43	Prec: 70.0	Rec: 100.0
+05-28-2019 20:27:53	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 50	Data: data/100k.txt	Samples: 100000	Acc: 95.12	Prec: 98.22	Rec: 91.9
+05-28-2019 20:32:25	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 50	Data: data/train.txt	Samples: 35	Acc: 51.43	Prec: 27.27	Rec: 85.71
+05-28-2019 20:32:44	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 50	Data: data/100k.txt	Samples: 100000	Acc: 78.04	Prec: 80.54	Rec: 73.94
+05-28-2019 20:33:33	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 100	Data: data/100k.txt	Samples: 100000	Acc: 78.58	Prec: 81.51	Rec: 73.93
+05-28-2019 20:43:53	model	Inp Size: 216	Resolution: [3, 3]	Total Epochs: 50	Data: data/faf1k.txt	Samples: 1000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 20:44:53	model	Inp Size: 216	Resolution: [3, 3]	Total Epochs: 50	Data: data/gendata.txt	Samples: 2000	Acc: 99.85	Prec: 100.0	Rec: 99.7
+05-28-2019 20:45:35	model	Inp Size: 216	Resolution: [3, 3]	Total Epochs: 50	Data: data/gendata.txt	Samples: 2000	Acc: 99.95	Prec: 99.9	Rec: 100.0
+05-28-2019 20:47:43	model	Inp Size: 216	Resolution: [3, 3]	Total Epochs: 50	Data: data/gendata.txt	Samples: 10000	Acc: 99.94	Prec: 99.96	Rec: 99.92
+05-28-2019 20:49:34	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 50	Data: data/gendata.txt	Samples: 10000	Acc: 99.74	Prec: 99.5	Rec: 99.98
+05-28-2019 21:07:00	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 50	Data: data/gendataAD.txt	Samples: 1000	Acc: 97.7	Prec: 98.18	Rec: 97.2
+05-28-2019 21:11:07	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 50	Data: data/gendataAD.txt	Samples: 1000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 21:13:10	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 50	Data: data/gendataAD.txt	Samples: 25000	Acc: 99.97	Prec: 99.94	Rec: 100.0
+05-28-2019 21:16:08	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 50	Data: data/gendataAD.txt	Samples: 25000	Acc: 99.97	Prec: 99.94	Rec: 100.0
+05-28-2019 21:17:38	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 50	Data: data/gendataAD.txt	Samples: 25000	Acc: 99.97	Prec: 99.94	Rec: 100.0
+05-28-2019 21:25:05	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1000	Data: data/xxx10k.txt	Samples: 10000	Acc: 93.31	Prec: 95.97	Rec: 90.42
+05-28-2019 21:28:40	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1100	Data: data/xxx10k.txt	Samples: 10000	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-28-2019 21:29:47	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1100	Data: data/gendataAD.txt	Samples: 25000	Acc: 99.98	Prec: 99.97	Rec: 99.99
+05-28-2019 21:36:37	XxX	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 10000	Data: data/XxX25k.txt	Samples: 25000	Acc: 68.83	Prec: 70.28	Rec: 65.26
+05-28-2019 21:40:21	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1100	Data: data/XxX25k.txt	Samples: 25000	Acc: 99.98	Prec: 99.97	Rec: 99.99
+05-29-2019 15:42:30	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1100	Data: data/XxX50.txt	Samples: 50	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-29-2019 15:43:26	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1100	Data: data/XxX50.txt	Samples: 50	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-29-2019 15:44:44	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1100	Data: data/XxX50.txt	Samples: 50	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-29-2019 15:45:23	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1100	Data: data/XxX50.txt	Samples: 50	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-29-2019 15:49:16	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1100	Data: data/XxX50.txt	Samples: 50	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-29-2019 15:49:40	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1100	Data: data/XxX50.txt	Samples: 50	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-29-2019 15:50:16	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1100	Data: data/XxX50.txt	Samples: 50	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-29-2019 15:50:27	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1100	Data: data/XxX50.txt	Samples: 50	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-29-2019 15:50:51	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1100	Data: data/XxX50.txt	Samples: 50	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-29-2019 15:51:12	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1100	Data: data/XxX50.txt	Samples: 50	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-29-2019 15:56:22	model	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1100	Data: data/XxX50.txt	Samples: 50	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-29-2019 16:18:49	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 150	Data: data/train20.txt	Samples: 20	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-29-2019 16:19:06	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 150	Data: data/train.txt	Samples: 35	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-29-2019 16:19:15	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 150	Data: data/test.txt	Samples: 16	Acc: 68.75	Prec: 100.0	Rec: 37.5
+05-29-2019 16:20:00	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 150	Data: data/test.txt	Samples: 16	Acc: 68.75	Prec: 100.0	Rec: 37.5
+05-29-2019 16:25:30	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 150	Data: data/test2.txt	Samples: 16	Acc: 68.75	Prec: 100.0	Rec: 37.5
+05-29-2019 16:27:48	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 150	Data: data/test.txt	Samples: 7	Acc: 71.43	Prec: 0.0	Rec: 0.0
+05-29-2019 16:28:25	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 150	Data: data/test.txt	Samples: 7	Acc: 71.43	Prec: 0.0	Rec: 0.0
+05-29-2019 16:29:13	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 150	Data: data/test.txt	Samples: 7	Acc: 71.43	Prec: 0.0	Rec: 0.0
+05-29-2019 16:30:53	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1150	Data: data/test.txt	Samples: 7	Acc: 71.43	Prec: 0.0	Rec: 0.0
+05-29-2019 16:33:18	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 10000	Data: data/test.txt	Samples: 7	Acc: 85.71	Prec: 100.0	Rec: 50.0
+05-29-2019 16:33:48	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 10000	Data: data/test.txt	Samples: 7	Acc: 85.71	Prec: 100.0	Rec: 50.0
+05-29-2019 16:34:05	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 10000	Data: data/test2.txt	Samples: 16	Acc: 87.5	Prec: 100.0	Rec: 75.0
+05-29-2019 16:34:38	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 10000	Data: data/train.txt	Samples: 35	Acc: 100.0	Prec: 100.0	Rec: 100.0
+05-29-2019 16:34:58	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 10000	Data: data/train2.txt	Samples: 10000	Acc: 74.87	Prec: 97.05	Rec: 51.3
+05-29-2019 16:55:03	20samples2	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 10000	Data: data/train2.txt	Samples: 10000	Acc: 75.98	Prec: 98.4	Rec: 52.82
+05-29-2019 16:55:47	20samples2	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1000	Data: data/train2.txt	Samples: 10000	Acc: 72.35	Prec: 97.61	Rec: 45.82
+05-29-2019 17:05:07	20samples2	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 230	Data: data/train2.txt	Samples: 10000	Acc: 74.77	Prec: 94.5	Rec: 52.6
+05-29-2019 17:07:37	20samples2	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 460	Data: data/train2.txt	Samples: 10000	Acc: 78.62	Prec: 96.83	Rec: 59.18
+05-29-2019 17:11:37	20samples2	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 430	Data: data/train2.txt	Samples: 10000	Acc: 73.06	Prec: 96.31	Rec: 47.96
+05-29-2019 17:50:15	20samples2	Trained On: ['data/train20.txt', 'data/train.txt']	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 645	Test Data: data/train2.txt	Samples: 10000	Acc: 67.33	Prec: 98.82	Rec: 35.08
+05-29-2019 17:51:31	20samples2	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 645	Test Data: data/train2.txt	Samples: 10000	Acc: 67.33	Prec: 98.82	Rec: 35.08	Trained On: ['data/train20.txt', 'data/train.txt']

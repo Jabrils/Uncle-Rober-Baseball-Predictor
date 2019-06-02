@@ -1,21 +1,68 @@
-05-28-2019 00:23:37	testTest	Inp Size: 36	Resolution: 2	Total Epochs: 1100	Data: data/train.txt	Samples: 35	Acc: 100.0	Prec: 100.0	Rec: 100.0
-05-28-2019 00:24:10	testTest	Inp Size: 36	Resolution: 2	Total Epochs: 1100	Data: data/train2.txt	Samples: 10000	Acc: 73.87	Prec: 98.07	Rec: 48.7
-05-28-2019 00:25:28	testTest2	Inp Size: 36	Resolution: 2	Total Epochs: 500	Data: data/train.txt	Samples: 35	Acc: 62.86	Prec: 35.0	Rec: 100.0
-05-28-2019 00:25:46	testTest2	Inp Size: 36	Resolution: 2	Total Epochs: 500	Data: data/train2.txt	Samples: 10000	Acc: 70.56	Prec: 63.18	Rec: 98.56
-05-28-2019 00:26:19	testTest2	Inp Size: 36	Resolution: 2	Total Epochs: 1000	Data: data/train.txt	Samples: 35	Acc: 62.86	Prec: 35.0	Rec: 100.0
-05-28-2019 00:26:36	testTest2	Inp Size: 36	Resolution: 2	Total Epochs: 1000	Data: data/train2.txt	Samples: 10000	Acc: 69.02	Prec: 61.9	Rec: 98.94
-05-28-2019 00:33:34	testTest2	Inp Size: 36	Resolution: 2	Total Epochs: 2500	Data: data/train2.txt	Samples: 10000	Acc: 77.07	Prec: 69.22	Rec: 97.5
-05-28-2019 00:34:13	testTest2	Inp Size: 36	Resolution: 2	Total Epochs: 4000	Data: data/train2.txt	Samples: 10000	Acc: 77.3	Prec: 69.39	Rec: 97.7
-05-28-2019 00:41:29	testTest3	Inp Size: 36	Resolution: 2	Total Epochs: 500	Data: data/train.txt	Samples: 35	Acc: 100.0	Prec: 100.0	Rec: 100.0
-05-28-2019 00:43:19	testTest3	Inp Size: 36	Resolution: 2	Total Epochs: 500	Data: data/100k.txt	Samples: 100000	Acc: 100.0	Prec: 100.0	Rec: 100.0
-05-28-2019 00:50:28	testTest4	Inp Size: 36	Resolution: 2	Total Epochs: 250	Data: data/100k.txt	Samples: 100000	Acc: 100.0	Prec: 100.0	Rec: 100.0
-05-28-2019 00:56:12	testTest5	Inp Size: 36	Resolution: 2	Total Epochs: 100	Data: data/100k.txt	Samples: 100000	Acc: 100.0	Prec: 100.0	Rec: 100.0
-05-28-2019 00:58:34	testTest6	Inp Size: 36	Resolution: 2	Total Epochs: 50	Data: data/100k.txt	Samples: 100000	Acc: 100.0	Prec: 100.0	Rec: 100.0
-05-28-2019 01:05:33	testTest7	Inp Size: 36	Resolution: 2	Total Epochs: 25	Data: data/100k.txt	Samples: 100000	Acc: 99.99	Prec: 100.0	Rec: 99.98
-05-28-2019 01:10:06	testTest7	Inp Size: 36	Resolution: 2	Total Epochs: 10	Data: data/100k.txt	Samples: 100000	Acc: 93.77	Prec: 94.74	Rec: 92.68
-05-28-2019 01:19:57	testTest7	Inp Size: 225	Resolution: 2	Total Epochs: 250	Data: data/100k.txt	Samples: 100000	Acc: 100.0	Prec: 100.0	Rec: 100.0
-05-28-2019 16:47:27	model	Inp Size: 6	Resolution: ['1', '1']	Total Epochs: 2100	Data: data/train2.txt	Samples: 10000	Acc: 84.44	Prec: 78.81	Rec: 94.22
-05-28-2019 16:57:07	model	Inp Size: 6	Resolution: ['1', '1']	Total Epochs: 2100	Data: data/train2.txt	Samples: 10000	Acc: 84.44	Prec: 78.81	Rec: 94.22
-05-28-2019 17:03:54	model	Inp Size: 42	Resolution: [1, 2]	Total Epochs: 1000	Data: data/train2.txt	Samples: 10000	Acc: 100.0	Prec: 100.0	Rec: 100.0
-05-28-2019 17:04:53	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 1000	Data: data/train2.txt	Samples: 10000	Acc: 100.0	Prec: 100.0	Rec: 100.0
-05-28-2019 17:33:36	model	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 250	Data: data/train2.txt	Samples: 10000	Acc: 79.75	Prec: 82.6	Rec: 75.38
+05-29-2019 21:48:12	50samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 250	Test Data: data/train2.txt	Samples: 10000	Acc: 50.38	Prec: 55.03	Rec: 4.16	Trained On: ['data/train50.txt']
+05-29-2019 21:48:37	50samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 500	Test Data: data/train2.txt	Samples: 10000	Acc: 50.36	Prec: 54.86	Rec: 4.06	Trained On: ['data/train50.txt']
+05-29-2019 21:49:51	50samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 3000	Test Data: data/train2.txt	Samples: 10000	Acc: 50.36	Prec: 54.89	Rec: 4.04	Trained On: ['data/train50.txt']
+05-29-2019 21:51:10	50samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 2500	Test Data: data/train2.txt	Samples: 10000	Acc: 52.18	Prec: 68.66	Rec: 8.02	Trained On: ['data/train50.txt']
+05-29-2019 21:52:18	20samples2	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 645	Test Data: data/train2.txt	Samples: 10000	Acc: 67.33	Prec: 98.82	Rec: 35.08	Trained On: ['data/train20.txt', 'data/train.txt']
+05-29-2019 21:52:45	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 645	Test Data: data/train2.txt	Samples: 10000	Acc: 74.87	Prec: 97.05	Rec: 51.3	Trained On: ['data/train20.txt', 'data/train.txt']
+05-29-2019 21:53:26	50samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 2500	Test Data: data/train2.txt	Samples: 10000	Acc: 51.94	Prec: 64.79	Rec: 8.5	Trained On: ['data/train50.txt']
+05-29-2019 21:54:09	50samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 2500	Test Data: data/train2.txt	Samples: 10000	Acc: 56.63	Prec: 80.84	Rec: 17.38	Trained On: ['data/test.txt']
+05-29-2019 21:54:47	50samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 5000	Test Data: data/train2.txt	Samples: 10000	Acc: 59.6	Prec: 79.13	Rec: 26.08	Trained On: ['data/test.txt']
+05-29-2019 21:55:24	50samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 7500	Test Data: data/train2.txt	Samples: 10000	Acc: 90.15	Prec: 88.03	Rec: 92.94	Trained On: ['data/test.txt', 'data/train.txt']
+05-29-2019 21:57:27	50samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 50	Test Data: data/train2.txt	Samples: 10000	Acc: 51.51	Prec: 65.96	Rec: 6.24	Trained On: ['data/train50.txt']
+05-29-2019 22:00:58	50samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 96.7	Prec: 98.14	Rec: 95.2	Trained On: ['data/train50.txt']
+05-29-2019 22:03:10	30samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 2000	Test Data: data/train2.txt	Samples: 10000	Acc: 91.67	Prec: 93.6	Rec: 89.46	Trained On: ['data/train30.txt']
+05-29-2019 22:03:24	30samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 2000	Test Data: data/train2.txt	Samples: 10000	Acc: 91.67	Prec: 93.6	Rec: 89.46	Trained On: ['data/train30.txt']
+05-29-2019 22:05:23	40samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 89.53	Prec: 98.62	Rec: 80.18	Trained On: ['data/train40.txt']
+05-29-2019 22:05:47	40samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 2000	Test Data: data/train2.txt	Samples: 10000	Acc: 91.59	Prec: 99.13	Rec: 83.92	Trained On: ['data/train40.txt']
+05-29-2019 22:06:17	40samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 96.7	Prec: 96.38	Rec: 97.04	Trained On: ['data/train40.txt']
+05-29-2019 22:07:23	30samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 2000	Test Data: data/train2.txt	Samples: 10000	Acc: 91.67	Prec: 93.6	Rec: 89.46	Trained On: ['data/train30.txt']
+05-29-2019 22:08:26	30samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 92.81	Prec: 95.02	Rec: 90.36	Trained On: ['data/train30.txt']
+05-29-2019 22:09:34	30samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 92.81	Prec: 95.02	Rec: 90.36	Trained On: ['data/train30.txt']
+05-29-2019 22:10:53	40samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 96.7	Prec: 96.38	Rec: 97.04	Trained On: ['data/train40.txt']
+05-29-2019 22:11:22	50samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 96.7	Prec: 98.14	Rec: 95.2	Trained On: ['data/train50.txt']
+05-29-2019 22:11:58	50samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 98.99	Prec: 99.08	Rec: 98.9	Trained On: ['data/train50.txt']
+05-29-2019 22:13:14	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 74.23	Prec: 96.36	Rec: 50.36	Trained On: ['data/train20.txt']
+05-29-2019 22:13:58	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 2000	Test Data: data/train2.txt	Samples: 10000	Acc: 74.49	Prec: 96.72	Rec: 50.7	Trained On: ['data/train20.txt']
+05-29-2019 22:19:36	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 2000	Test Data: data/train2.txt	Samples: 10000	Acc: 74.49	Prec: 96.72	Rec: 50.7	Trained On: ['data/train20.txt']
+05-29-2019 22:20:15	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 2000	Test Data: data/train2.txt	Samples: 10000	Acc: 74.49	Prec: 96.72	Rec: 50.7	Trained On: ['data/train20.txt']
+05-29-2019 22:20:44	20samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 2000	Test Data: data/train2.txt	Samples: 10000	Acc: 74.49	Prec: 96.72	Rec: 50.7	Trained On: ['data/train20.txt']
+05-29-2019 22:21:09	50samples	Inp Size: 252	Resolution: [2, 3]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 98.99	Prec: 99.08	Rec: 98.9	Trained On: ['data/train50.txt']
+05-30-2019 20:15:14	20Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 100	Test Data: data/train20.txt	Samples: 20	Acc: 100.0	Prec: 100.0	Rec: 100.0	Trained On: ['data/train20.txt']
+05-30-2019 20:15:32	20Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 100	Test Data: data/train2.txt	Samples: 10000	Acc: 73.15	Prec: 93.83	Rec: 49.56	Trained On: ['data/train20.txt']
+05-30-2019 20:16:29	20Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 1100	Test Data: data/train2.txt	Samples: 10000	Acc: 73.15	Prec: 97.23	Rec: 47.66	Trained On: ['data/train20.txt']
+05-30-2019 20:17:33	20Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 75.81	Prec: 95.23	Rec: 54.34	Trained On: ['data/train20.txt']
+05-30-2019 20:17:58	20Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 85.27	Prec: 99.25	Rec: 71.08	Trained On: ['data/train20.txt']
+05-30-2019 20:19:33	20Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 2000	Test Data: data/train2.txt	Samples: 10000	Acc: 86.62	Prec: 99.27	Rec: 73.78	Trained On: ['data/train20.txt']
+05-30-2019 20:20:02	20Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 3000	Test Data: data/train2.txt	Samples: 10000	Acc: 86.87	Prec: 99.41	Rec: 74.18	Trained On: ['data/train20.txt']
+05-30-2019 20:21:08	20Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 3000	Test Data: data/train2.txt	Samples: 10000	Acc: 86.87	Prec: 99.41	Rec: 74.18	Trained On: ['data/train20.txt']
+05-30-2019 20:21:41	20Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 3000	Test Data: data/train2.txt	Samples: 10000	Acc: 86.87	Prec: 99.41	Rec: 74.18	Trained On: ['data/train20.txt']
+05-30-2019 20:21:53	30Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 87.14	Prec: 91.82	Rec: 81.54	Trained On: ['data/train30.txt']
+05-30-2019 20:22:20	30Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 91.83	Prec: 95.05	Rec: 88.26	Trained On: ['data/train30.txt']
+05-30-2019 20:22:44	30Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 93.06	Prec: 95.14	Rec: 90.76	Trained On: ['data/train30.txt']
+05-30-2019 20:23:07	30Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 2000	Test Data: data/train2.txt	Samples: 10000	Acc: 93.15	Prec: 95.28	Rec: 90.8	Trained On: ['data/train30.txt']
+05-30-2019 20:24:34	40Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 81.26	Prec: 98.09	Rec: 63.76	Trained On: ['data/train40.txt']
+05-30-2019 20:24:55	40Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 90.82	Prec: 89.1	Rec: 93.02	Trained On: ['data/train40.txt']
+05-30-2019 20:25:32	40Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 91.91	Prec: 98.1	Rec: 85.48	Trained On: ['data/train40.txt']
+05-30-2019 20:25:57	40Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 2000	Test Data: data/train2.txt	Samples: 10000	Acc: 92.52	Prec: 98.23	Rec: 86.6	Trained On: ['data/train40.txt']
+05-30-2019 20:26:26	40Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 2000	Test Data: data/train2.txt	Samples: 10000	Acc: 94.36	Prec: 94.86	Rec: 93.8	Trained On: ['data/train40.txt']
+05-30-2019 20:26:56	40Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 2000	Test Data: data/train2.txt	Samples: 10000	Acc: 91.49	Prec: 93.87	Rec: 88.78	Trained On: ['data/train40.txt']
+05-30-2019 20:27:17	40Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 2000	Test Data: data/train2.txt	Samples: 10000	Acc: 91.33	Prec: 95.51	Rec: 86.74	Trained On: ['data/train40.txt']
+05-30-2019 20:27:52	40Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 2000	Test Data: data/train2.txt	Samples: 10000	Acc: 88.42	Prec: 82.25	Rec: 97.98	Trained On: ['data/train40.txt']
+05-30-2019 20:28:34	40Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 2000	Test Data: data/train2.txt	Samples: 10000	Acc: 96.76	Prec: 98.23	Rec: 95.24	Trained On: ['data/train40.txt']
+05-30-2019 20:29:44	50Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 2000	Test Data: data/train2.txt	Samples: 10000	Acc: 86.46	Prec: 99.08	Rec: 73.6	Trained On: ['data/train50.txt']
+05-30-2019 20:30:12	50Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 2000	Test Data: data/train2.txt	Samples: 10000	Acc: 95.54	Prec: 98.3	Rec: 92.68	Trained On: ['data/train50.txt']
+05-30-2019 20:30:44	50Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 2000	Test Data: data/train2.txt	Samples: 10000	Acc: 94.49	Prec: 99.25	Rec: 89.66	Trained On: ['data/train50.txt']
+05-30-2019 20:31:11	50Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 4000	Test Data: data/train2.txt	Samples: 10000	Acc: 94.77	Prec: 99.34	Rec: 90.14	Trained On: ['data/train50.txt']
+05-30-2019 20:32:14	50Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 14000	Test Data: data/train2.txt	Samples: 10000	Acc: 94.8	Prec: 99.36	Rec: 90.18	Trained On: ['data/train50.txt']
+05-30-2019 20:33:09	50Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 10000	Test Data: data/train2.txt	Samples: 10000	Acc: 94.59	Prec: 97.98	Rec: 91.06	Trained On: ['data/train50.txt']
+05-30-2019 20:34:09	50Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 10000	Test Data: data/train2.txt	Samples: 10000	Acc: 90.02	Prec: 99.33	Rec: 80.58	Trained On: ['data/train50.txt']
+05-30-2019 20:35:33	50Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 10000	Test Data: data/train2.txt	Samples: 10000	Acc: 96.7	Prec: 98.36	Rec: 94.98	Trained On: ['data/train50.txt']
+05-30-2019 20:36:11	50Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 11000	Test Data: data/train2.txt	Samples: 10000	Acc: 96.78	Prec: 98.47	Rec: 95.04	Trained On: ['data/train50.txt']
+05-30-2019 20:37:32	50Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 98.35	Prec: 99.67	Rec: 97.02	Trained On: ['data/train50.txt']
+05-30-2019 20:42:03	100Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 99.6	Prec: 99.88	Rec: 99.32	Trained On: ['data/train100.txt']
+05-30-2019 20:42:42	100Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 98.58	Prec: 99.61	Rec: 97.54	Trained On: ['data/train100.txt']
+05-30-2019 20:43:14	100Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 98.29	Prec: 99.33	Rec: 97.24	Trained On: ['data/train100.txt']
+05-30-2019 20:43:33	100Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 99.91	Prec: 100.0	Rec: 99.82	Trained On: ['data/train100.txt']
+05-30-2019 21:07:09	10Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 53.8	Prec: 52.0	Rec: 98.7	Trained On: ['data/train10.txt']
+05-30-2019 21:07:47	10Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 53.84	Prec: 52.0	Rec: 99.86	Trained On: ['data/train10.txt']
+05-30-2019 21:08:12	10Samples	Inp Size: 36	Resolution: [2, 2]	Total Epochs: 1000	Test Data: data/train2.txt	Samples: 10000	Acc: 81.24	Prec: 79.24	Rec: 84.66	Trained On: ['data/train10.txt']

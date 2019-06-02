@@ -1,13 +1,17 @@
+# <.001 = converged (likely)
+# 1000 epochs 100 batches should be good enough
+def train(dataPath, modelsDir, modelName, loadModel, epochs, batches, spe):
+    import SDEC
+    from SDEC import Comm
 
-def train(dataPath, modelsDir, modelName, loadModel, epochs, batches):
+    Comm("INIT TRAINING")
+
     from keras.models import Sequential
     from keras.models import load_model
     from keras.layers import Input, Dense
     from keras.models import Model
     import os
     import numpy as np
-    import SDEC
-    from SDEC import Comm
     import argparse
     
     conf = "config/SeqDomain.conf"
@@ -32,6 +36,7 @@ def train(dataPath, modelsDir, modelName, loadModel, epochs, batches):
     # 
     test = np.array(test)
 
+    Comm(f"RES: {settings.resolution} ~ INP: {len(test[0])}")
 
     inp = Input(shape=(len(test[0]),))
 
@@ -56,7 +61,7 @@ def train(dataPath, modelsDir, modelName, loadModel, epochs, batches):
             cont = input("Want to create the model here? (y or n): ")
             loadModel = False
 
-            if cont != 'y':
+            if cont.lower() != 'y':
                 Comm("EXITING!")
                 return
 
@@ -64,7 +69,10 @@ def train(dataPath, modelsDir, modelName, loadModel, epochs, batches):
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     # Fit the model
-    model.fit(test, Y, epochs=epochs, batch_size=batches)
+    if spe > 0:
+        model.fit(test, Y, epochs=epochs, steps_per_epoch=spe, shuffle=True)
+    else:
+        model.fit(test, Y, epochs=epochs, batch_size=batches, shuffle=True)
 
     # evaluate the model
     scores = model.evaluate(test, Y)
@@ -81,23 +89,13 @@ def train(dataPath, modelsDir, modelName, loadModel, epochs, batches):
     # save the model
     model.save(f"{modelsDir}/{modelName}/{modelName}.h5")
 
-    # 
-    con = "Inp Size\tEpoch\n"
+    # Create a new Model Config Class
+    mc = SDEC.ModelConfig()
 
-    # We will update this if we are loading a model & adding to more epochs to it
-    nEpoch = 0
-
-    # 
+    # We will load our model config if the loadModel flag has been set, then well update the epochs & training data
     if loadModel:
-        with open(f"{modelsDir}/{modelName}/conf.mc", 'r+') as f:
-            epGrab = f.read().split('\n')[1].split('\t')[1]
-            nEpoch = int(epGrab)
-    
-    # 
-    con += f'{len(dic)}\t{epochs + nEpoch}'
+        mc = SDEC.LoadModelConfig(f"{modelsDir}/{modelName}/conf.mc")
 
-    # 
-    with open(f"{modelsDir}/{modelName}/conf.mc", 'w') as f:
-        f.write(con)
+    SDEC.SaveModelConfig(f"{modelsDir}/{modelName}/conf.mc", mc, dataPath, dic, epochs)
 
     Comm("Saved Model!")

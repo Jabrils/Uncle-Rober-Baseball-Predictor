@@ -19,6 +19,8 @@ parser.add_argument('-e','--epochs',type=int, default=100,
                     help='use -e to set the number of epochs for training')
 parser.add_argument('-b','--batches',type=int, default=2048,
                     help='use -b to set the number to batch for training')
+parser.add_argument('-spe','--steps_per_e',type=int, default=0,
+                    help='use -spe to set the number of steps per epochs for training')
 parser.add_argument('-res','--resolution',type=int, nargs='+', default=[2,3],
                     help='use -res to set the resolution')
 parser.add_argument('-t', "--train", action='store_true',
@@ -37,7 +39,7 @@ if args.init:
 
 # Train
 if args.train:
-    train.train(args.data_file, args.models_dir, args.model_name, args.load_model, args.epochs, args.batches)
+    train.train(args.data_file, args.models_dir, args.model_name, args.load_model, args.epochs, args.batches, args.steps_per_e)
 
 # Predict
 if args.predict:

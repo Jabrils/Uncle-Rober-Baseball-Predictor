@@ -26,8 +26,14 @@ def CreateSeqDomainDictionary(data, resolution):
     # Check if resolution only has 1 value, if true then set both min & max to == that value
     resolution = [resolution[0],resolution[0]] if len(resolution) == 1 else resolution
 
+    if resolution[1] > 8:
+        Comm("MAX RESOLUTION IS 8!")
+
+    resolution = [resolution[0],8] if resolution[1] > 8 else resolution
+
     # Then check to see if the min resolution is greater than the max resolution, if so then clip it to == the max 
     resolution[0] = resolution[1] if resolution[0] > resolution[1] else resolution[0]
+
 
     # Our current resolution we are looking at == the min resolution
     resLoc = resolution[0]
@@ -44,6 +50,7 @@ def CreateSeqDomainDictionary(data, resolution):
     # Remove the duplicates from our list, but keep the order (important for determinism)
     elements = list(OrderedDict.fromkeys(elements))
 
+    # 
     ret = GetResInps(resolution, elements)
     
     # Create our dictionary
@@ -66,6 +73,8 @@ def CreateSeqDomainDictionary(data, resolution):
 def GetResInps(res, el):
     ret = []
     resLoc = res[0]
+    ttt = ""
+    app = []
 
     while resLoc <= res[1]:
         # This will add every element to every element in the domain, creating every possible correlation with a resolution of 2 
@@ -102,6 +111,39 @@ def GetResInps(res, el):
                         for l in el:
                             for o in el:
                                 ret.append(i+j+k+l+o)
+        
+        # This will add every element to every element in the domain, creating every possible correlation with a resolution of 3
+        if resLoc == 6:
+            for i in el:
+                for j in el:
+                    for k in el:
+                        for l in el:
+                            for o in el:
+                                for p in el:
+                                    ret.append(i+j+k+l+o+p)
+
+        # This will add every element to every element in the domain, creating every possible correlation with a resolution of 3
+        if resLoc == 7:
+            for i in el:
+                for j in el:
+                    for k in el:
+                        for l in el:
+                            for o in el:
+                                for p in el:
+                                    for q in el:
+                                        ret.append(i+j+k+l+o+p+q)
+
+        # This will add every element to every element in the domain, creating every possible correlation with a resolution of 3
+        if resLoc == 8:
+            for i in el:
+                for j in el:
+                    for k in el:
+                        for l in el:
+                            for o in el:
+                                for p in el:
+                                    for q in el:
+                                        for r in el:
+                                            ret.append(i+j+k+l+o+p+q+r)
 
         # Incriment the resolution location we are looking at
         resLoc += 1
@@ -158,7 +200,7 @@ def GetSeqCount(seq, seqDictionary, resolution):
         for t in corr:
             grab[t]+=1
 
-        # 
+        # We want to squash all values in the counter to be within 0 & 1
         for g in grab:
             grab[g] = sigmoid(grab[g])
 
@@ -172,6 +214,9 @@ def sigmoid(x, derivative=False):
     return x*(1-x) if derivative else 1/(1+np.exp(-x))
 
 def LoadConf(file):
+    '''
+    Loads the configuration file of data domain, returns (dictionary, all settings)
+    '''
     seq = {}
 
     try:
@@ -228,5 +273,38 @@ def LoadSettings(sett):
 
     return s
 
+def LoadModelConfig(mcf):
+    mc = ModelConfig()
+
+    with open(mcf, 'r+') as f:
+        setts = f.read().split('\n')[1].split('\t')
+        mc.inputSize = setts[0]
+        mc.totalEpoch = int(setts[1])
+        mc.trainingData = setts[2].split(',')
+
+    return mc
+
+def SaveModelConfig(mcf, mc, trainingData, dic, epochs):
+    con = "Inp Size\tEpoch\tTraining Data\n"
+
+    # 
+    if trainingData not in mc.trainingData:
+        mc.trainingData.append(trainingData)
+
+    # Join the Training Data onto 1 string so we can write it to the config file
+    td = ','.join(mc.trainingData)
+
+    # 
+    con += f'{len(dic)}\t{epochs + mc.totalEpoch}\t{td}'
+
+    # 
+    with open(mcf, 'w') as f:
+        f.write(con)
+
 class Settings():
     resolution = 0
+
+class ModelConfig():
+    inputSize = 0
+    totalEpoch = 0
+    trainingData = []
