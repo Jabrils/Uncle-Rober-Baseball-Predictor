@@ -1,0 +1,5 @@
+hia	1
+aci	0
+hie	1
+bcc	0
+hij	1

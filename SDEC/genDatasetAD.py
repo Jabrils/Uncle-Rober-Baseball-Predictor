@@ -1,7 +1,7 @@
 import random
 import SDEC
 
-chars = ['a','s','d','g','f','s','e']
+chars = ['a','b','c','d','e','f','g','h','i','j']
 conf = "config/SeqDomain.conf"
 dic, settings = SDEC.LoadConf(conf)
 distr = {0:0,1:0}
@@ -12,26 +12,26 @@ labeler = True
 
 def genSeq():
     seqG = ''
-    for i in range(random.randint(2,10)):
+    for i in range(random.randint(4,20)):
         seqG += chars[random.randint(0,len(chars)-1)]
 
     return seqG
 
 save = ''
 
-for a in range(50):
+for a in range(1000):
     label = turn
 
     while label == turn:
         t = ''
         t += f'{genSeq()}'
-        counter = SDEC.GetSeqCount(t, dic, settings.resolution)
-
+        counter = SDEC.GetSeqCount(t, dic, settings.resolution, True, True)
+ 
         label = 0
 
-        for C in chars:
+        for d in chars:
             for c in chars:
-                if counter[dic[f'{C}{c}{C}']] > .5:
+                if counter[dic[f"h{c}{d}c"]] > .5:
                     label = 1
                     break
 
@@ -42,7 +42,7 @@ for a in range(50):
 
     print(a)
 
-with open('data/GenDataAD.txt','w') as f:
+with open('data/raw.txt','w') as f:
     f.write(save[:-1])
 
 # print(distr, "DONE!")

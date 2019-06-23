@@ -1,2 +1,2 @@
-Inp Size	Epoch
-252	1100
+Inp Size	Epoch	Training Data
+1452	100	data/neww.txt

@@ -19,6 +19,8 @@ def PredictSingle(X, modelDir, modelName):
     mConf = mConf.split('\n')
 
     # 
+    find = []
+    # 
     dic, settings = SDEC.LoadConf(conf)
     #
     test = SDEC.GetAllSeqCount(X, dic, settings.resolution)
@@ -48,7 +50,7 @@ def PredictSingle(X, modelDir, modelName):
     Comm("END")
     return int(round(predictions[0][0]))
 
-def predict(dataPath, modelDir, modelName):
+def predict(dataPath, the_file, modelDir, modelName):
     import SDEC
     from SDEC import Comm
 
@@ -62,7 +64,7 @@ def predict(dataPath, modelDir, modelName):
     import time
     import datetime
     
-    conf = "config/SeqDomain.conf"
+    conf = f"{modelDir}/config/SeqDomain.conf"
 
     X = []
     Y = []
@@ -76,10 +78,10 @@ def predict(dataPath, modelDir, modelName):
     mConf = open(f"{modelDir}/{modelName}/conf.mc").read()
     mConf = mConf.split('\n')
 
-    Comm(f"LOADING {dataPath}!")
+    Comm(f"LOADING {the_file}!")
 
     # Load the data & split it by line breaks
-    with open(dataPath) as t:
+    with open(f'{the_file}') as t:
         new = t.read().split('\n')
 
     # Split the data again but this time by a tab. This will make 0 the sequence & 1 the label
@@ -95,7 +97,7 @@ def predict(dataPath, modelDir, modelName):
     # 
     dic, settings = SDEC.LoadConf(conf)
     #
-    test = SDEC.GetAllSeqCount(X, dic, settings.resolution)
+    test = SDEC.GetAllSeqCount(X, dic, settings.resolution, True, True)
     # 
     test = np.array(test)
     #
@@ -161,6 +163,6 @@ def predict(dataPath, modelDir, modelName):
         print("Recall;\nOut of all the actual 'steals' within the dataset, how many of those were correctly predicted?")
 
         with open('data/log.tsv','a+') as f:
-            f.write(f'{st}\t{modelName}\tInp Size: {len(dic)}\tResolution: {res}\tTotal Epochs: {ep}\tTest Data: {dataPath}\tSamples: {len(predictions)}\tAcc: {acc}\tPrec: {prec}\tRec: {rec}\tTrained On: {mc.trainingData}\n')
+            f.write(f'{st}\t{modelName}\tInp Size: {len(dic)}\tResolution: {res}\tTotal Epochs: {ep}\tTest Data: {the_file}\tSamples: {len(predictions)}\tAcc: {acc}\tPrec: {prec}\tRec: {rec}\tTrained On: {mc.trainingData}\n')
 
     Comm("END")

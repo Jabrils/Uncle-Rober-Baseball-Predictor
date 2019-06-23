@@ -1,0 +1,5 @@
+ghi	1
+bih	0
+hif	1
+gch	0
+ehi	1

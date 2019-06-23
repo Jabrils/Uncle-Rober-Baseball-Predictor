@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+  <meta name="author" content="GeeksLabs">
+  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+  <link rel="shortcut icon" href="img/baseball (1).png">
+
+  <title>Steal Predictor</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="css/bootstrap-theme.css" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="css/elegant-icons-style.css" rel="stylesheet" />
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <!-- full calendar css-->
+  <link href="assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
+  <link href="assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
+  <!-- easy pie chart-->
+  <link href="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
+  <!-- owl carousel -->
+  <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
+  <link href="css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="css/fullcalendar.css">
+  <link href="css/widgets.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet" />
+  <link href="css/xcharts.min.css" rel=" stylesheet">
+  <link href="css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+  <!-- =======================================================
+    Theme Name: NiceAdmin
+    Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+    Author: BootstrapMade
+    Author URL: https://bootstrapmade.com
+
+    Notes:
+    - Add backspace
+  ======================================================= -->
+</head>
+
+<body>
+  <!-- container section start -->
+  <section id="container" class="">
+
+    <header class="header dark-bg">
+      <!--logo start-->
+      <a href="index.html" class="logo"><img src="img/baseball (1).png" width="32" height="32"> Steal <span
+          class="lite">Predictor</span> <span class="ver">v1.0.0</span> </a>
+      <!--logo end-->
+    </header>
+    <!--header end-->
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+          <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+            <div class="info-box yellow-bg">
+              <!-- <i class="fa fa-cubes"></i> -->
+              <div class="count" id="sequence"></div>
+              <div class="title">Sequence</div>
+            </div>
+            <!--/.info-box-->
+          </div>
+          <!--/.col-->
+          <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+            <div class="info-box gray-bg" id="stealer">
+              <!-- <i class="fa fa-cubes"></i> -->
+              <div class="count" id='pred'>Not Steal</div>
+              <div class="title" id='found'>Prediction</div>
+            </div>
+          </div>
+        </div>
+        
+                <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="info-box blue-bg">
+              <div class="btn" onclick="Backspace()">
+                <div class="count"><</div>
+              </div>
+              <div class="btn" onclick="AddElement('A')">
+                <div class="count">A</div>
+                <div class="title" id="titleA"></div>
+              </div>
+              <div class="btn" onclick="AddElement('B')">
+                <div class="count">B</div>
+                <div class="title" id="titleB"></div>
+              </div>
+              <div class="btn" onclick="AddElement('C')">
+                <div class="count">C</div>
+                <div class="title" id="titleC"></div>
+              </div>
+              <div class="btn" onclick="AddElement('D')">
+                <div class="count">D</div>
+                <div class="title" id="titleD"></div>
+              </div>
+              <div class="btn" onclick="AddElement('E')">
+                <div class="count">E</div>
+                <div class="title" id="titleE"></div>
+              </div>
+              <div class="btn" onclick="AddElement('F')">
+                <div class="count">F</div>
+                <div class="title" id="titleF"></div>
+              </div>
+              <div class="btn" onclick="AddElement('G')">
+                <div class="count">G</div>
+                <div class="title" id="titleG"></div>
+              </div>
+              <div class="btn" onclick="AddElement('H')">
+                <div class="count">H</div>
+                <div class="title" id="titleH"></div>
+              </div>
+              <div class="btn" onclick="AddElement('I')">
+                <div class="count">I</div>
+                <div class="title" id="titleI"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="info-box orange-bg">
+              <div class="btn" onclick="Label(1)">
+                <div class="count">Steal</div>
+              </div>
+              <div class="btn" onclick="Label(0)">
+                <div class="count">Not Steal</div>
+              </div>
+              <div class="btn" onclick="Clear()">
+                  <div class="count">Clear</div>
+                </div>
+
+                <div class="btn" onclick="Encode()">
+                    <div class="count">Encode</div>
+                  </div>
+                  </div>
+          </div>
+        </div>
+
+        <div class="panel-body hide" id="encDiv">
+            <form class="form-horizontal " method="get">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">A</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" placeholder="What does A represent?" id="pA">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">B</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" placeholder="What does B represent?" id="pB">
+                </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-sm-2 control-label">C</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="What does C represent?" id="pC">
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">D</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" placeholder="What does D represent?" id="pD">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label">E</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="What does E represent?" id="pE">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">F</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" placeholder="What does F represent?" id="pF">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label">G</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="What does G represent?" id="pG">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">H</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" placeholder="What does H represent?" id="pH">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-sm-2 control-label">I</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="What does I represent?" id="pI">
+                              </div>
+                            </div>
+                                            
+            </form>
+          </div>
+
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="info-box green-bg">
+
+              <div class="count">Dataset</div>
+              <div class="pad">
+                <div class="count" id="dataD"></div>
+              </div>
+              <div class="pad">
+                <div class="count" id="dataL"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--/.info-box-->
+        <!--/.col-->
+
+        <!-- <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <div class="info-box brown-bg">
+              <div class="count">B</div>
+              <div class="title">Hat Brim</div>
+            </div> -->
+        <!--/.info-box-->
+        <!--/.col-->
+
+        <!--/.row-->
+      </section>
+    </section>
+    <!--main content end-->
+  </section>
+  <!-- container section start -->
+
+  <!-- javascripts -->
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery-ui-1.10.4.min.js"></script>
+  <script src="js/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="js/jquery-ui-1.9.2.custom.min.js"></script>
+  <!-- bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- nice scroll -->
+  <script src="js/jquery.scrollTo.min.js"></script>
+  <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+  <!-- charts scripts -->
+  <script src="assets/jquery-knob/js/jquery.knob.js"></script>
+  <script src="js/jquery.sparkline.js" type="text/javascript"></script>
+  <script src="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+  <script src="js/owl.carousel.js"></script>
+  <!-- jQuery full calendar -->
+  <<script src="js/fullcalendar.min.js">
+    </script>
+    <!-- Full Google Calendar - Calendar -->
+    <script src="assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
+    <!--script for this page only-->
+    <script src="js/calendar-custom.js"></script>
+    <script src="js/jquery.rateit.min.js"></script>
+    <!-- custom select -->
+    <script src="js/jquery.customSelect.min.js"></script>
+    <script src="assets/chart-master/Chart.js"></script>
+
+    <!--custome script for all page-->
+    <script src="js/scripts.js"></script>
+
+    <script>
+      var dataset = [];
+      var dict = {
+        "aa": 0,
+        "ab": 0,
+        "ac": 0,
+        "ad": 0,
+        "ae": 0,
+        "af": 0,
+        "ag": 0,
+        "ah": 0,
+        "ai": 0,
+        "ba": 0,
+        "bb": 0,
+        "bc": 0,
+        "bd": 0,
+        "be": 0,
+        "bf": 0,
+        "bg": 0,
+        "bh": 0,
+        "bi": 0,
+        "ca": 0,
+        "cb": 0,
+        "cc": 0,
+        "cd": 0,
+        "ce": 0,
+        "cf": 0,
+        "cg": 0,
+        "ch": 0,
+        "ci": 0,
+        "da": 0,
+        "db": 0,
+        "dc": 0,
+        "dd": 0,
+        "de": 0,
+        "df": 0,
+        "dg": 0,
+        "dh": 0,
+        "di": 0,
+        "ea": 0,
+        "eb": 0,
+        "ec": 0,
+        "ed": 0,
+        "ee": 0,
+        "ef": 0,
+        "eg": 0,
+        "eh": 0,
+        "ei": 0,
+        "fa": 0,
+        "fb": 0,
+        "fc": 0,
+        "fd": 0,
+        "fe": 0,
+        "ff": 0,
+        "fg": 0,
+        "fh": 0,
+        "fi": 0,
+        "ga": 0,
+        "gb": 0,
+        "gc": 0,
+        "gd": 0,
+        "ge": 0,
+        "gf": 0,
+        "gg": 0,
+        "gh": 0,
+        "gi": 0,
+        "ha": 0,
+        "hb": 0,
+        "hc": 0,
+        "hd": 0,
+        "he": 0,
+        "hf": 0,
+        "hg": 0,
+        "hh": 0,
+        "hi": 0,
+        "ia": 0,
+        "ib": 0,
+        "ic": 0,
+        "id": 0,
+        "ie": 0,
+        "if": 0,
+        "ig": 0,
+        "ih": 0,
+        "ii": 0
+      };
+      var steal = "aa";
+      var encoding = false;
+
+      function ResetDict(d) {
+        for (var key in d) {
+          d[key] = 0;
+        }
+
+        return d;
+      }
+
+      function Encode()
+      {
+        encoding = encoding == false ? true : false;
+
+        if (encoding)
+        {
+          document.getElementById("encDiv").classList.remove('hide');
+        }
+        else
+        {
+          document.getElementById("encDiv").classList.add('hide');
+        document.getElementById("titleA").innerHTML = document.getElementById("pA").value; 
+        document.getElementById("titleB").innerHTML = document.getElementById("pB").value; 
+        document.getElementById("titleC").innerHTML = document.getElementById("pC").value; 
+        document.getElementById("titleD").innerHTML = document.getElementById("pD").value; 
+        document.getElementById("titleE").innerHTML = document.getElementById("pE").value; 
+        document.getElementById("titleF").innerHTML = document.getElementById("pF").value; 
+        document.getElementById("titleG").innerHTML = document.getElementById("pG").value; 
+        document.getElementById("titleH").innerHTML = document.getElementById("pH").value; 
+        document.getElementById("titleI").innerHTML = document.getElementById("pI").value; 
+        }
+      }
+
+      function AddElement(e) {
+        seq = document.getElementById("sequence");
+        seq.innerHTML += e;
+
+        ss = seq.innerHTML.toLowerCase();
+
+        dict = ResetDict(dict);
+
+        for (i = 0; i < ss.length - 1; i++) {
+          corr = `${ss[i] + ss[i+1]}`;
+          dict[corr] += 1;
+        }
+
+        CheckSeq();
+
+      }
+
+      function Label(l) {
+        seq = document.getElementById("sequence").innerHTML.toLowerCase();
+
+        if (seq.length >= 2)
+        {
+        dataD = document.getElementById("dataD");
+        dataL = document.getElementById("dataL");
+
+        dataset.push([seq, l]);
+
+        d = dataset[dataset.length - 1][0];
+        l = dataset[dataset.length - 1][1];
+
+        dataD.innerHTML += `${d}<br>`;
+        dataL.innerHTML += `${l}<br>`;
+
+        FindSteal();
+
+        Clear();
+        }
+      }
+
+      function FindSteal() {
+        let top = Object.assign({}, dict);
+
+        top = ResetDict(top);
+
+        for (i = 0; i < dataset.length; i++) {
+            temp = [];
+          for (j = 0; j < dataset[i][0].length - 1; j++) {
+            
+
+            corr = `${dataset[i][0][j] + dataset[i][0][j+1]}`;
+
+            if (!temp.includes(corr))
+            {
+            top[corr] += dataset[i][1] == 1 ? 1 : -1;
+            }
+
+            temp.push(corr);
+          }
+        }
+
+      // Create items array
+      var items = Object.keys(top).map(function (key) {
+        return [key, top[key]];
+      });
+
+      // Sort the array based on the second element
+      items.sort(function (first, second) {
+        return second[1] - first[1];
+      });
+
+      steal = items[0][0];
+
+      found = document.getElementById("found");
+      found.innerHTML = `Prediction: ${steal}`;
+
+      }
+
+      function CheckSeq() {
+        console.log(steal);
+
+        if (dataset.length > 0) {
+          seq = document.getElementById("sequence");
+
+          if (dict[steal] == 1) {
+            ChangePred(1);
+          } else {
+            ChangePred(0);
+          }
+        } else {
+          ChangePred(0);
+        }
+      }
+
+      function ChangePred(v) {
+        if (v == 1) {
+          document.getElementById("stealer").classList.remove('gray-bg');
+          document.getElementById("stealer").classList.add('red-bg');
+          document.getElementById("pred").innerHTML = "Steal";
+        } else {
+          document.getElementById("stealer").classList.remove('red-bg');
+          document.getElementById("stealer").classList.add('gray-bg');
+          document.getElementById("pred").innerHTML = "Not Steal";
+        }
+
+      }
+
+      function Backspace() {
+        seq = document.getElementById("sequence");
+        seq.innerHTML = seq.innerHTML.replace(/.$/, '');
+        CheckSeq();
+      }
+
+      function Clear(e) {
+        seq = document.getElementById("sequence");
+        seq.innerHTML = "";
+        dict = ResetDict(dict);
+        CheckSeq();
+      }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+dhi	1
+ifb	0
+bhi	1
+che	0
+hhi	1

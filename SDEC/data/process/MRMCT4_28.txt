@@ -1,0 +1,5 @@
+ehb	0
+hif	1
+gaf	0
+hih	1
+bha	0

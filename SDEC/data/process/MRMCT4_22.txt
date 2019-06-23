@@ -1,0 +1,5 @@
+hff	0
+hii	1
+eab	0
+hij	1
+daj	0

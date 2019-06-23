@@ -1,0 +1,5 @@
+gfa	0
+hij	1
+cdb	0
+ghi	1
+aeb	0

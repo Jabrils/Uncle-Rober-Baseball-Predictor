@@ -6,17 +6,26 @@
 def Comm(msg):
     print(f"\n{'~'*20} {msg} {'~'*20}\n")
 
-def CreateSeqDomainDictionary(data, resolution):
+def CreateSeqDomainDictionary(data, model_dir, resolution):
     '''
     This will scan an entire data file & will document every possible sequence in the file & store it into a dictionary that can then be used as an index for inputs to the NN
     '''
-
-    conf = "config/SeqDomain.conf"
 
     # ADD OPTION TO TOGGLE CHARACTERS OR WORDS
 
     # Import libs
     from collections import OrderedDict
+    import os
+
+    folder = f"{model_dir}/config"
+
+    if not os.path.exists(model_dir):
+        os.mkdir(model_dir)
+
+    if not os.path.exists(folder):
+        os.mkdir(folder)
+
+    conf = f"{folder}/SeqDomain.conf"
 
     # Init Vars
     dic = []
@@ -156,7 +165,7 @@ def CreateCounter(dic):
 
     return counter
 
-def GetSeqCount(seq, seqDictionary, resolution):
+def GetSeqCount(seq, seqDictionary, resolution, squash, bare):
     '''
     Sequence Domain Dictionary
     '''
@@ -202,9 +211,9 @@ def GetSeqCount(seq, seqDictionary, resolution):
 
         # We want to squash all values in the counter to be within 0 & 1
         for g in grab:
-            grab[g] = sigmoid(grab[g])
+            grab[g] = sigmoid(grab[g]) if squash else grab[g]
 
-        return list(grab.values())
+        return list(grab.values()) if bare else grab
     except:
         Comm(f"COUNTER FOR {seq} COULD NOT BE CREATED!")
         return None #[0]*330
@@ -241,7 +250,7 @@ def LoadConf(file):
 
         return None
 
-def GetAllSeqCount(data, dic, res):
+def GetAllSeqCount(data, dic, res, squash, bare):
 
     ret = []
 
@@ -251,7 +260,7 @@ def GetAllSeqCount(data, dic, res):
 
     # 
     for d in data:
-        ret.append(GetSeqCount(d,counter, res))
+        ret.append(GetSeqCount(d,counter, res, squash, bare))
 
     return ret
 

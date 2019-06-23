@@ -1,0 +1,5 @@
+ida	0
+hih	1
+bci	0
+hib	1
+hbf	0

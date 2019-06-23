@@ -1,0 +1,5 @@
+hid	1
+aah	0
+ghi	1
+igd	0
+hig	1

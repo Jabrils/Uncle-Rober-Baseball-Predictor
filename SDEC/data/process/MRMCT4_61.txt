@@ -1,0 +1,5 @@
+hib	1
+hfe	0
+ahi	1
+fje	0
+ghi	1
