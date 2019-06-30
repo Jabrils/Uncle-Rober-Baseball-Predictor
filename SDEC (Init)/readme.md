@@ -3,7 +3,7 @@
 
 ## Notes
 - Yo! sorry this is a mess. I was really running & gunning to get this all working for Mark Rober's video. If you'd like to get the lastest & greatest on SDEC, please visit this repo: https://github.com/Jabrils/SDEC
-- If you want to test out the model for the final challenge that mark proposed, check out the folder [PlexWipe](.\PlexWipe) for everything you need, & the models [PlexWipe/33_1K](.\PlexWipe) or [PlexWipe/33_1K_2](.\PlexWipe) for the accurate predicting models.
+- If you want to test out the model for the final challenge that mark proposed, check out the folder [PlexWipe](PlexWipe) for everything you need, & the models [PlexWipe/33_1K](PlexWipe) or [PlexWipe/33_1K_2](PlexWipe) for the accurate predicting models.
 
 ## What you will need:
 |Need|Description
