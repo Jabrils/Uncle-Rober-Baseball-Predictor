@@ -1,0 +1,5 @@
+chi	1
+abj	0
+hig	1
+ecd	0
+ihi	1

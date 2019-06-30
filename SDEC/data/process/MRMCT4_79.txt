@@ -1,5 +1,0 @@
-hig	1
-jec	0
-ehi	1
-bdj	0
-hic	1

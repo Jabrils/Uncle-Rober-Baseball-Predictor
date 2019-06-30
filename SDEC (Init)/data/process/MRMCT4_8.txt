@@ -1,0 +1,5 @@
+gaa	0
+ghi	1
+hgb	0
+ehi	1
+ajj	0

@@ -1,5 +1,0 @@
-bhi	1
-dhh	0
-hid	1
-gcb	0
-hic	1

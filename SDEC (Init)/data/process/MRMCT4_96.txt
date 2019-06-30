@@ -1,0 +1,5 @@
+eid	0
+ehi	1
+hhf	0
+hhi	1
+jig	0

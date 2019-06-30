@@ -1,5 +1,0 @@
-dhi	1
-ded	0
-ehi	1
-gff	0
-ahi	1

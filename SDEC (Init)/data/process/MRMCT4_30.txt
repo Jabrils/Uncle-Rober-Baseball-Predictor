@@ -1,0 +1,5 @@
+eef	0
+hib	1
+ceb	0
+hig	1
+bcc	0

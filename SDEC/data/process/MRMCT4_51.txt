@@ -1,5 +1,0 @@
-hif	1
-hba	0
-hif	1
-hhh	0
-ihi	1

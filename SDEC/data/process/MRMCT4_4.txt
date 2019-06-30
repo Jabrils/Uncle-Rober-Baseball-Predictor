@@ -1,5 +1,0 @@
-dag	0
-chi	1
-jbc	0
-hii	1
-jgi	0

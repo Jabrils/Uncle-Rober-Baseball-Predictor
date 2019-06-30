@@ -1,5 +1,0 @@
-cjd	0
-hia	1
-hac	0
-hii	1
-deh	0

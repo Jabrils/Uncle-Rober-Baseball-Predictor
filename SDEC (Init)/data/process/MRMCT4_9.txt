@@ -1,0 +1,5 @@
+hig	1
+agc	0
+ihi	1
+hda	0
+hig	1

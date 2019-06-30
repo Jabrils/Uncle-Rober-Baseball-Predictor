@@ -1,5 +1,0 @@
-dbi	0
-hii	1
-cff	0
-hie	1
-cba	0

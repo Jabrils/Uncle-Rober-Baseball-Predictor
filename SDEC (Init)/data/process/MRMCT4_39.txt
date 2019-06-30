@@ -1,0 +1,5 @@
+chi	1
+cbc	0
+hia	1
+jfc	0
+hij	1

@@ -1,0 +1,5 @@
+eda	0
+chi	1
+bdc	0
+hij	1
+ihe	0

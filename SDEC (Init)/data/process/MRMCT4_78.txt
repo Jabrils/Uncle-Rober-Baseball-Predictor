@@ -1,0 +1,5 @@
+ddf	0
+chi	1
+acd	0
+hij	1
+agj	0

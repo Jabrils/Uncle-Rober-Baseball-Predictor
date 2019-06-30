@@ -1,5 +1,0 @@
-ehi	1
-cba	0
-hhi	1
-dhe	0
-jhi	1

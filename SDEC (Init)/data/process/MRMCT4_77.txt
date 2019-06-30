@@ -1,0 +1,5 @@
+dhi	1
+dhg	0
+hid	1
+gcd	0
+hia	1

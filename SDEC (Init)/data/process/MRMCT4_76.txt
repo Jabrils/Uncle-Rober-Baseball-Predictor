@@ -1,0 +1,5 @@
+ajb	0
+hii	1
+cdf	0
+ehi	1
+icd	0

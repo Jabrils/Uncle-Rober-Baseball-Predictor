@@ -1,0 +1,5 @@
+fga	0
+fhi	1
+fif	0
+hii	1
+edd	0

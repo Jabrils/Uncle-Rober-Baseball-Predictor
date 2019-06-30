@@ -1,5 +1,0 @@
-jhi	1
-cfe	0
-hif	1
-hdb	0
-hid	1

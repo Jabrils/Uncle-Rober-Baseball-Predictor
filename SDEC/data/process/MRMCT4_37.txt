@@ -1,5 +1,0 @@
-ihi	1
-ifa	0
-hif	1
-fbi	0
-fhi	1

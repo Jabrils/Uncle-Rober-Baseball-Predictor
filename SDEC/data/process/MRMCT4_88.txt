@@ -1,5 +1,0 @@
-dha	0
-chi	1
-aff	0
-ehi	1
-efb	0

@@ -1,0 +1,5 @@
+ghi	1
+abc	0
+jhi	1
+acd	0
+hia	1

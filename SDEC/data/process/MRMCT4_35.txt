@@ -1,5 +1,0 @@
-bhi	1
-bjf	0
-fhi	1
-bee	0
-hib	1

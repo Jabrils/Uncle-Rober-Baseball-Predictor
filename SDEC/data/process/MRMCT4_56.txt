@@ -1,5 +1,0 @@
-cig	0
-hhi	1
-acf	0
-jhi	1
-dig	0

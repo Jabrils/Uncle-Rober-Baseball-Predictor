@@ -1,5 +1,0 @@
-chi	1
-bea	0
-hii	1
-haf	0
-hig	1

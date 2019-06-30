@@ -1,5 +1,0 @@
-agi	0
-hii	1
-ace	0
-hii	1
-hab	0

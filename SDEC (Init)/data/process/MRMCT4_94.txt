@@ -1,0 +1,5 @@
+cdb	0
+chi	1
+egj	0
+ghi	1
+hbi	0

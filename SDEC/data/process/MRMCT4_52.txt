@@ -1,5 +1,0 @@
-gee	0
-bhi	1
-beh	0
-hij	1
-jei	0

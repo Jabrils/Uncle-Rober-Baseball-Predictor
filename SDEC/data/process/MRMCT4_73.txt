@@ -1,5 +1,0 @@
-hie	1
-cgi	0
-bhi	1
-hec	0
-hij	1

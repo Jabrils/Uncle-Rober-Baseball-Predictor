@@ -1,0 +1,5 @@
+hih	1
+jae	0
+hii	1
+jhe	0
+hid	1

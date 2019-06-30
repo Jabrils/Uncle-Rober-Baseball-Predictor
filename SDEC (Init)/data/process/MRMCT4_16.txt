@@ -1,0 +1,5 @@
+aee	0
+chi	1
+cih	0
+hie	1
+aid	0

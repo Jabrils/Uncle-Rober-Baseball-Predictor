@@ -1,5 +1,0 @@
-gce	0
-hif	1
-iha	0
-ghi	1
-jic	0

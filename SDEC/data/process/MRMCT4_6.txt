@@ -1,5 +1,0 @@
-idg	0
-hii	1
-cjf	0
-hif	1
-abc	0
