@@ -12,6 +12,9 @@
 |A Dataset|I have some datasets all throughout this repo for testing many different angles, but you could also supply your own.
 |Neural Network Architecture|SDEC is simply a sequence encoder, you will still need to optimize your own Neural Network architectures. You can modify this in the script [train.py](train.py) line 60
 
+## How to install Dependencies:
+    pip install -r requirements.txt
+
 ## How to encode a Dataset:
 
 - SDEC is made to work with sequences only
