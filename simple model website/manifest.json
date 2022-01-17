@@ -1,0 +1,20 @@
+{
+  "name": "Baseball Steal Predictor",
+  "short_name": "SP",
+  "version": "1.0.5",
+  "description": "Steal steal signals with a simple algorithm",
+  "theme_color": "#20232a",
+  "background_color": "#20232a",
+  "display": "minimal-ui",
+  "scope": "./",
+  "start_url": "./index.html",
+  "prefer_related_applications": false,
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./img/baseball (1).png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}

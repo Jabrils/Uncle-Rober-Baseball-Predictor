@@ -8,6 +8,7 @@
   <meta name="author" content="GeeksLabs">
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/baseball (1).png">
+  <link rel="apple-touch-icon" href="img/baseball (1).png">
 
   <title>Steal Predictor</title>
 
@@ -37,6 +38,10 @@
     Notes:
     - Add backspace
   ======================================================= -->
+
+  <!--Progressive Web App-->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#20232a">
 </head>
 
 <body>
@@ -211,7 +216,7 @@
                 <!--/.col-->
 
                 <!-- <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-            <div class="info-box brown-bg">
+                  <div class="info-box brown-bg">
               <div class="count">B</div>
               <div class="title">Hat Brim</div>
             </div> -->
@@ -224,6 +229,24 @@
     <!--main content end-->
   </section>
   <!-- container section start -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("./service_worker.js").then(
+          function (registration) {
+            console.log(
+              "ServiceWorker registration successful with scope: ",
+            registration.scope
+            );
+          },
+
+          function (err) {
+            console.log("ServiceWorker registration failed: ", err);
+          }
+        );
+      });
+    }
+  </script>
 
   <script>
     var dataset = [];
@@ -376,7 +399,7 @@
 
         lastD = dataD.innerHTML.split('<br>');
         lastL = dataL.innerHTML.split('<br>');
-        
+
         dataD.innerHTML = ''
         dataL.innerHTML = ''
 
